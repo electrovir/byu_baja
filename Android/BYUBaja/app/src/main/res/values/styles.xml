@@ -1,0 +1,21 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="android:colorForeground">@android:color/holo_orange_dark</item>
+        <item name="android:navigationBarColor">@color/colorBackgroundTransparent</item>
+        <item name="android:statusBarColor">@color/colorBackgroundTransparent</item>
+        <item name="android:textColorPrimary">@color/colorTextDefault</item>
+        <item name="android:textColorPrimaryInverse">@android:color/holo_red_light</item>
+        <item name="android:textColorSecondary">@color/testColor1</item>
+        <item name="android:textColorSecondaryInverse">@color/colorBackground</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:textSize">@dimen/defaultTextSize</item>
+    </style>
+
+</resources>
