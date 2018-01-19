@@ -1,3 +1,7 @@
+//
+// Speedometer and Tachometer setup
+//
+
 #define AVERAGE_COUNT_TACHOMETER_MAX 2
 #define AVERAGE_COUNT_SPEEDOMETER_MAX 2
 #define TACHOMETER_PIN 7
@@ -5,13 +9,13 @@
 #define BAUD_RATE 115200
 #define ZERO_RPM_TIMEOUT 1000000
 #define ZERO_SPEED_TIMEOUT 1000000
-#define WHEEL_DIAMETER_INCHES 21
+#define WHEEL_DIAMETER_INCHES 21.0
 
 enum spinState {TRIGGER, ON, OFF};
 spinState currentTachometerState = OFF;
 spinState currentSpeedometerState = OFF;
-const float SPEEDOMETER_FACTOR = (AVERAGE_COUNT_SPEEDOMETER_MAX/2) * 178499.6 * WHEEL_DIAMETER_INCHES;
-const unsigned long TACHOMETER_FACTOR = AVERAGE_COUNT_TACHOMETER_MAX/2 * 60000000;
+const float SPEEDOMETER_FACTOR = (AVERAGE_COUNT_SPEEDOMETER_MAX/2.0) * 178499.6 * WHEEL_DIAMETER_INCHES;
+const unsigned long TACHOMETER_FACTOR = AVERAGE_COUNT_TACHOMETER_MAX/2.0 * 60000000.0;
 
 unsigned long lastTimeTachometer = 0;
 unsigned long averageTotalTimeTachometer = 0;
@@ -27,21 +31,73 @@ int ledStatus = LOW;
 int finalRpm = 0;
 int finalSpeed = 0;
 
+//
+// linear potentiometer setup (suspension position)
+//
+
+#define SHOCK_PIN_RIGHT A5
+#define SHOCK_PIN_LEFT A4
+
+// These are calculated as percentages of the total possible shock travel reported as integer values.
+// Ex: a value of 55 = 55%
+unsigned int shockLeft = 0;
+unsigned int shockRight = 0;
+// used to convert analog input value to a percent
+const float SHOCK_FACTOR = (1024.0/100.0);
+// the analog inputs can only be read every 100 microseconds
+enum shockState {DELAY, READ};
+unsigned long lastTimeShock = 0;
+shockState currentShockState = READ;
+
+
 void setup() {
   // initialize serial:
   Serial.begin(BAUD_RATE);
   pinMode(TACHOMETER_PIN, INPUT);
+  pinMode(SPEEDOMETER_PIN, INPUT);
   pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(SHOCK_PIN_LEFT, INPUT);
+  pinMode(SHOCK_PIN_RIGHT, INPUT);
 }
 
 void loop() {
-  readTachometer();
-  readSpeedometer();
+  unsigned long newTime = micros();
+  readTachometer(newTime);
+  readSpeedometer(newTime);
+  readPotentiometers(newTime);
 }
 
-void readTachometer() {
+void readPotentiometers(unsigned long newTime) {
+  shockState nextShockState = currentShockState;
+
+  if (currentShockState == DELAY) {
+    if (newTime - lastTimeShock > 100) {
+      nextShockState = READ;
+      lastTimeShock = newTime;
+    }
+  }
+  else if (currentShockState == READ){
+    bool print = false;
+    unsigned int newShockRight = float(analogRead(SHOCK_PIN_RIGHT)) / SHOCK_FACTOR;
+    unsigned int newShockLeft = float(analogRead(SHOCK_PIN_LEFT)) / SHOCK_FACTOR;
+    
+    nextShockState = DELAY;
+    if (newShockRight != shockRight || newShockLeft != shockLeft) {
+      print = true;
+    }
+
+    shockRight = newShockRight;
+    shockLeft = newShockLeft;
+    if (print) {
+      printValues();
+    }
+  }
+
+  currentShockState = nextShockState;
+}
+
+void readTachometer(unsigned long newTime) {
   spinState nextTachometerState = currentTachometerState;
-  unsigned long newTime = micros();
   int tachometerReading = digitalRead(TACHOMETER_PIN);
   unsigned long difference = newTime - lastTimeTachometer;
   if (currentTachometerState == OFF) {
@@ -90,9 +146,8 @@ void readTachometer() {
 }
 
 
-void readSpeedometer() {
+void readSpeedometer(unsigned long newTime) {
   spinState nextSpeedometerState = currentSpeedometerState;
-  unsigned long newTime = micros();
   int speedometerReading = digitalRead(SPEEDOMETER_PIN);
   unsigned long difference = newTime - lastTimeSpeedometer;
   if (currentSpeedometerState == OFF) {
@@ -141,6 +196,10 @@ void readSpeedometer() {
 
 
 void printValues() {
-  Serial.println("r:" + String(finalRpm) + " s:" + String(finalSpeed));
+  // r: revolutions (rpm)
+  // s: speed (mph)
+  // sl: left shock position (%)
+  // sr: right shock position (%)
+  Serial.println("r:" + String(finalRpm) + " s:" + String(finalSpeed) + " sl:" + String(shockLeft) + " sr:" + String(shockRight));
 }
 
