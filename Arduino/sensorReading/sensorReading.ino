@@ -2,6 +2,13 @@
 // Speedometer and Tachometer setup
 //
 
+// hook up bluetooth module like so:
+// bluetooth to arduino
+// VCC to 5 V
+// GND TO GND
+// TX to RX
+// RX to TX
+
 #define AVERAGE_COUNT_TACHOMETER_MAX 2
 #define AVERAGE_COUNT_SPEEDOMETER_MAX 2
 #define TACHOMETER_PIN 7
@@ -10,6 +17,8 @@
 #define ZERO_RPM_TIMEOUT 1000000
 #define ZERO_SPEED_TIMEOUT 1000000
 #define WHEEL_DIAMETER_INCHES 21.0
+// this is the maximum period of bluetooth transmission in milliseconds
+#define MIN_PRINT_DELAY 12
 
 enum spinState {TRIGGER, ON, OFF};
 spinState currentTachometerState = OFF;
@@ -49,6 +58,11 @@ enum shockState {DELAY, READ};
 unsigned long lastTimeShock = 0;
 shockState currentShockState = READ;
 
+//
+// printing speed
+//
+
+unsigned long lastTimePrint = 0;
 
 void setup() {
   // initialize serial:
@@ -65,6 +79,8 @@ void loop() {
   readTachometer(newTime);
   readSpeedometer(newTime);
   readPotentiometers(newTime);
+//  uncomment the next line for testing max transmission frequency
+//  printValues();
 }
 
 void readPotentiometers(unsigned long newTime) {
@@ -200,6 +216,11 @@ void printValues() {
   // s: speed (mph)
   // sl: left shock position (%)
   // sr: right shock position (%)
-  Serial.println("r:" + String(finalRpm) + " s:" + String(finalSpeed) + " sl:" + String(shockLeft) + " sr:" + String(shockRight));
+
+  // limit this to 100 Hz otherwise the 
+  if (millis() - lastTimePrint > MIN_PRINT_DELAY ) {
+    Serial.println("r:" + String(finalRpm) + " s:" + String(finalSpeed) + " sl:" + String(shockLeft) + " sr:" + String(shockRight));
+    lastTimePrint = millis();
+  }
 }
 

@@ -47,31 +47,35 @@ public class MainActivity extends AppCompatActivity implements BluetoothConnecti
 //    FileWriter logFileWriter;
 
     public void handleBluetoothInput(String input) {
-
-        FileLog.data(TAG, input);
-
-        String rpm = "0";
-        String mph = "0";
-        if (input == null) {
-            rpm = "0";
-            mph = "0";
+        final boolean testing = false;
+        if (testing) {
+            System.out.println(input);
         }
         else {
-            Log.i(TAG, "bluetooth input: " + input);
-            String[] parts = input.split(" ");
+            FileLog.data(TAG, input);
 
-            String[] rpmParts = parts[0].split(":");
-            rpm = rpmParts[1];
+            String rpm = "0";
+            String mph = "0";
+            if (input == null) {
+                rpm = "0";
+                mph = "0";
+            }
+            else {
+                String[] parts = input.split(" ");
 
-            String[] mphParts = parts[1].split(":");
-            mph = mphParts[1];
-        }
+                String[] rpmParts = parts[0].split(":");
+                rpm = rpmParts[1];
 
-        if (mRpmText != null) {
-            mRpmText.setText(rpm);
-        }
-        if (mMphText != null) {
-            mMphText.setText(mph);
+                String[] mphParts = parts[1].split(":");
+                mph = mphParts[1];
+            }
+
+            if (mRpmText != null) {
+                mRpmText.setText(rpm);
+            }
+            if (mMphText != null) {
+                mMphText.setText(mph);
+            }
         }
     }
 
@@ -153,7 +157,10 @@ public class MainActivity extends AppCompatActivity implements BluetoothConnecti
         mRpmText = (TextView) findViewById(R.id.tachometer);
         mMphText = (TextView) findViewById(R.id.speedometer);
 
+        // TODO: make this work with multiple module names, or just rename the module
+        // note that HC-05 will be the final module name but I'm developing with an H4S
         addBluetoothFragment("H4S");
+//        addBluetoothFragment("HC-05");
         try {
             FileLog.setDefaultFiles(this, "byu_baja");
         }
