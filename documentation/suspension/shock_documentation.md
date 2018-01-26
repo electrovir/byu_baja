@@ -13,11 +13,11 @@ Because the Arduino's analog inputs report values on a range of ``0 - 1024`` int
 
 I'm deciding to report the potentiometer values as percentages. Thus, all is needed is the analog input divided by the max analog reading (``1024``) multiplied by ``100`` so that it's an integer (making life easier and faster).
 
-$$ shockTravel = \frac{analogInput}{1024} * 100 \% $$
+shockTravel = analogInput / 1024 * 100%
 
 Due to the way **C++** handles number types and arithmetic, I changed the equation to the following to prevent the formula always rounding down to 0:
 
-$$ shockTravel = \frac{analogInput}{\frac{1024.0}{100.0}} \% $$
+shockTravel = analogInput / ( 1024.0 / 100.0% )
 
 ## Circuit
 
