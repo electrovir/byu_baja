@@ -32,22 +32,36 @@
         android:columnCount="2"
         android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="164dp">
+        android:layout_marginEnd="164dp"
+        android:id="@+id/gridLayout">
+
+        <TextView
+            android:id="@+id/speedometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:clickable="false"
+            android:text="0"
+            android:textAlignment="textEnd"
+            android:textAppearance="@android:style/TextAppearance.Theme"
+            android:textSize="@dimen/testingTextSize"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/mphLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="0dp"
-            android:layout_toStartOf="@+id/tachometer"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/textView_2"
+            android:layout_marginEnd="37dp"
             android:paddingRight="@dimen/testLabelPadding"
             android:text="@string/speedLabel"
             android:textSize="@dimen/testLabelSize"
             tools:layout_editor_absoluteY="273dp"/>
 
         <TextView
-            android:id="@+id/speedometer"
+            android:id="@+id/tachometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -69,18 +83,59 @@
             android:text="@string/tachLabel"
             android:textSize="@dimen/testLabelSize"
             tools:layout_editor_absoluteY="273dp"/>
-
-        <TextView
-            android:id="@+id/tachometer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:clickable="false"
-            android:text="0"
-            android:textAppearance="@android:style/TextAppearance.Theme"
-            android:textSize="@dimen/testingTextSize"
-            android:textStyle="bold"/>
     </GridLayout>
+
+    <TextView
+        android:id="@+id/textView_0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView_1"
+        android:layout_alignTop="@+id/gridLayout"
+        android:layout_marginTop="15dp"
+        android:text="TextView"/>
+
+    <TextView
+        android:id="@+id/textView_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/gridLayout"
+        android:layout_marginStart="99dp"
+        android:layout_marginTop="69dp"
+        android:layout_toEndOf="@+id/progressBar"
+        android:text="TextView"/>
+
+    <TextView
+        android:id="@+id/textView_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView_0"
+        android:layout_centerVertical="true"
+        android:text="TextView"/>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView_2"
+        android:layout_alignBottom="@+id/textView_2"
+        android:layout_toStartOf="@+id/textView_2"
+        android:text="value 2: "/>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView7"
+        android:layout_alignTop="@+id/textView_0"
+        android:text="value 0: "/>
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView_1"
+        android:layout_alignBottom="@+id/textView_1"
+        android:layout_toStartOf="@+id/textView_2"
+        android:text="value 1: "/>
 
 </RelativeLayout>

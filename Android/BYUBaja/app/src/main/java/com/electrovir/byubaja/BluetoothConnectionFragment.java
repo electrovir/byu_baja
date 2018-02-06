@@ -31,7 +31,6 @@ public class BluetoothConnectionFragment extends Fragment {
     private static final int RECEIVE_MESSAGE_STATUS = 1;
     private static final int SOCKET_CLOSED_STATUS = -1;
 
-
     private static final int BLUETOOTH_ENABLE_CODE = 1;
 
     // SPP UUID service
@@ -68,12 +67,13 @@ public class BluetoothConnectionFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         this.actvitiyContext.unregisterReceiver(this.mReceiver);
+//        this.caller = null;
     }
 
-    public static BluetoothConnectionFragment newInstance(String param1) {
+    public static BluetoothConnectionFragment newInstance(String bluetoothName) {
         BluetoothConnectionFragment fragment = new BluetoothConnectionFragment();
         Bundle args = new Bundle();
-        args.putString(BLUETOOTH_MODULE_NAME_KEY, param1);
+        args.putString(BLUETOOTH_MODULE_NAME_KEY, bluetoothName);
         fragment.setArguments(args);
         return fragment;
     }
@@ -184,8 +184,6 @@ public class BluetoothConnectionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_bluetooth_connection, container, false);
         // this has no view
         return null;
     }

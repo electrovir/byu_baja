@@ -1,21 +1,8 @@
 package com.electrovir.byubaja;
 
-
-import android.Manifest;
 import android.app.ActionBar;
-import android.app.Activity;
-import android.app.DownloadManager;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.media.MediaScannerConnection;
-import android.net.Uri;
 import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,22 +12,25 @@ import android.widget.Toast;
 
 import com.electrovir.byubaja.util.FileLog;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.Buffer;
 
-public class MainActivity extends AppCompatActivity implements BluetoothConnectionFragment.BluetoothConnectionCaller {
+public class MainActivity extends AppCompatActivity implements
+        BluetoothConnectionFragment.BluetoothConnectionCaller, AccelerometerFragment.AccelerometerCaller {
     private static final String TAG = "BYU_BAJA_MAIN";
 
     TextView mRpmText;
     TextView mMphText;
+    TextView mCoords0;
+    TextView mCoords1;
+    TextView mCoords2;
     private static final String TAG_BLUETOOTH_FRAGMENT = "bluetoothFragment";
+    private static final String TAG_ACCELEROMETER_FRAGMENT = "accelerometerFragment";
+
     private BluetoothConnectionFragment mBluetoothFragment;
+    private AccelerometerFragment mAccelerometerFragment;
 //    private static final String FILE_NAME = "testLog.txt";
 //    FileOutputStream fileOutput;
     File logFile;
@@ -79,6 +69,12 @@ public class MainActivity extends AppCompatActivity implements BluetoothConnecti
         }
     }
 
+    public void handleAccelerometerInput(float value0, float value1, float value2) {
+        mCoords0.setText(Float.toString(value0));
+        mCoords1.setText(Float.toString(value1));
+        mCoords2.setText(Float.toString(value2));
+    }
+
     public void bluetoothError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
@@ -110,7 +106,18 @@ public class MainActivity extends AppCompatActivity implements BluetoothConnecti
             mBluetoothFragment = BluetoothConnectionFragment.newInstance(moduleName);
             fm.beginTransaction().add(mBluetoothFragment, TAG_BLUETOOTH_FRAGMENT).commit();
         }
-//        mBluetoothFragment.setCaller(this);
+    }
+
+    private void addAccelerometerFragment() {
+        FragmentManager fm = this.getSupportFragmentManager();
+
+        mAccelerometerFragment = (AccelerometerFragment) fm.findFragmentByTag
+                (TAG_ACCELEROMETER_FRAGMENT);
+
+        if (mAccelerometerFragment == null) {
+            mAccelerometerFragment = AccelerometerFragment.newInstance();
+            fm.beginTransaction().add(mAccelerometerFragment, TAG_ACCELEROMETER_FRAGMENT).commit();
+        }
     }
 
     public void appendLog(String text) {
@@ -151,16 +158,21 @@ public class MainActivity extends AppCompatActivity implements BluetoothConnecti
         super.onCreate(savedInstanceState);
         setContentView(R.layout.instrument_cluster);
         hideStatusBar();
-        appendLog("WHY AREN'T YOU WORKING");
 
         // for display the received data from the Arduino
         mRpmText = (TextView) findViewById(R.id.tachometer);
         mMphText = (TextView) findViewById(R.id.speedometer);
+        mCoords0 = (TextView) findViewById(R.id.textView_0);
+        mCoords1 = (TextView) findViewById(R.id.textView_1);
+        mCoords2 = (TextView) findViewById(R.id.textView_2);
 
         // TODO: make this work with multiple module names, or just rename the module
         // note that HC-05 will be the final module name but I'm developing with an H4S
         addBluetoothFragment("H4S");
 //        addBluetoothFragment("HC-05");
+
+        addAccelerometerFragment();
+
         try {
             FileLog.setDefaultFiles(this, "byu_baja");
         }
@@ -172,25 +184,11 @@ public class MainActivity extends AppCompatActivity implements BluetoothConnecti
     @Override
     public void onResume() {
         super.onResume();
-
     }
-
-//    private boolean saveFile() {
-//        //https://stackoverflow.com/a/46657146/5500690
-//        DownloadManager downloadManager = (DownloadManager) this.getSystemService(DOWNLOAD_SERVICE);
-//        downloadManager.addCompletedDownload(logFile.getName(), logFile.getName(), true, "text/plain",logFile.getAbsolutePath(),logFile.length(),true);
-//        return true;
-//    }
 
     @Override
     public void onPause() {
         super.onPause();
         FileLog.saveFile(this);
-//        if (saveFile()) {
-//            Log.i(TAG, "download complete!");
-//        }
-//        else {
-//            Log.i(TAG, "download failed!");
-//        }
     }
 }
