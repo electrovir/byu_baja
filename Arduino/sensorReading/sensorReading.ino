@@ -219,7 +219,7 @@ void printValues() {
 
   // limit this to 100 Hz otherwise the 
   if (millis() - lastTimePrint > MIN_PRINT_DELAY ) {
-    Serial.println("r:" + String(finalRpm) + " s:" + String(finalSpeed) + " sl:" + String(shockLeft) + " sr:" + String(shockRight));
+    Serial.println("{\"r\":" + String(finalRpm) + " \"s\":" + String(finalSpeed) + " \"sl\":" + String(shockLeft) + " \"sr\":" + String(shockRight) + "}");
     lastTimePrint = millis();
   }
 }

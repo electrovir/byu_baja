@@ -17,6 +17,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class MainActivity extends AppCompatActivity implements
         BluetoothConnectionFragment.BluetoothConnectionCaller, AccelerometerFragment.AccelerometerCaller {
     private static final String TAG = "BYU_BAJA_MAIN";
@@ -26,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements
     TextView mCoords0;
     TextView mCoords1;
     TextView mCoords2;
+    TextView mShockLeftText;
+    TextView mShockRightText;
     private static final String TAG_BLUETOOTH_FRAGMENT = "bluetoothFragment";
     private static final String TAG_ACCELEROMETER_FRAGMENT = "accelerometerFragment";
 
@@ -42,29 +47,27 @@ public class MainActivity extends AppCompatActivity implements
             System.out.println(input);
         }
         else {
+            // "r:rpm s:mph sl:percent sr:percent
+            // (shockRight)
             FileLog.data(TAG, input);
 
-            String rpm = "0";
-            String mph = "0";
-            if (input == null) {
-                rpm = "0";
-                mph = "0";
-            }
-            else {
-                String[] parts = input.split(" ");
+            if (input != null) {
+                // 0: rpm
+                // 1: mph
+                // 2: percent
+                // 3: percent
+                ReceiveData data;
+                try {
+                    data = new ObjectMapper().readValue(input, ReceiveData.class);
 
-                String[] rpmParts = parts[0].split(":");
-                rpm = rpmParts[1];
+                    mRpmText.setText(data.r);
+                    mMphText.setText(data.s);
+                    mShockLeftText.setText(data.sl);
+                    mShockRightText.setText(data.sr);
+                }
+                catch (IOException error) {
 
-                String[] mphParts = parts[1].split(":");
-                mph = mphParts[1];
-            }
-
-            if (mRpmText != null) {
-                mRpmText.setText(rpm);
-            }
-            if (mMphText != null) {
-                mMphText.setText(mph);
+                }
             }
         }
     }
@@ -165,6 +168,9 @@ public class MainActivity extends AppCompatActivity implements
         mCoords0 = (TextView) findViewById(R.id.textView_0);
         mCoords1 = (TextView) findViewById(R.id.textView_1);
         mCoords2 = (TextView) findViewById(R.id.textView_2);
+
+        mShockRightText = (TextView) findViewById(R.id.shock_left);
+        mShockLeftText = (TextView) findViewById(R.id.shock_right);
 
         // TODO: make this work with multiple module names, or just rename the module
         // note that HC-05 will be the final module name but I'm developing with an H4S

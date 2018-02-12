@@ -92,7 +92,8 @@
         android:layout_alignStart="@+id/textView_1"
         android:layout_alignTop="@+id/gridLayout"
         android:layout_marginTop="15dp"
-        android:text="TextView"/>
+        android:text="TextView"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/textView_1"
@@ -102,7 +103,8 @@
         android:layout_marginStart="99dp"
         android:layout_marginTop="69dp"
         android:layout_toEndOf="@+id/progressBar"
-        android:text="TextView"/>
+        android:text="TextView"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/textView_2"
@@ -110,7 +112,8 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/textView_0"
         android:layout_centerVertical="true"
-        android:text="TextView"/>
+        android:text="TextView"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/textView5"
@@ -119,7 +122,8 @@
         android:layout_alignBaseline="@+id/textView_2"
         android:layout_alignBottom="@+id/textView_2"
         android:layout_toStartOf="@+id/textView_2"
-        android:text="value 2: "/>
+        android:text="value 2: "
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/textView6"
@@ -127,7 +131,8 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/textView7"
         android:layout_alignTop="@+id/textView_0"
-        android:text="value 0: "/>
+        android:text="value 0: "
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/textView7"
@@ -136,6 +141,27 @@
         android:layout_alignBaseline="@+id/textView_1"
         android:layout_alignBottom="@+id/textView_1"
         android:layout_toStartOf="@+id/textView_2"
-        android:text="value 1: "/>
+        android:text="value 1: "
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/shock_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/shock_left"
+        android:layout_alignBottom="@+id/shock_left"
+        android:layout_marginEnd="43dp"
+        android:layout_toStartOf="@+id/gridLayout"
+        android:text="TextView"/>
+
+    <TextView
+        android:id="@+id/shock_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/gridLayout"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="157dp"
+        android:layout_toEndOf="@+id/progressBar"
+        android:text="TextView"/>
 
 </RelativeLayout>
