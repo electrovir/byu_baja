@@ -17,7 +17,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class MainActivity extends AppCompatActivity implements
@@ -43,30 +42,31 @@ public class MainActivity extends AppCompatActivity implements
 
     public void handleBluetoothInput(String input) {
         final boolean testing = false;
+        System.out.println("b");
         if (testing) {
             System.out.println(input);
         }
         else {
-            // "r:rpm s:mph sl:percent sr:percent
-            // (shockRight)
-            FileLog.data(TAG, input);
-
             if (input != null) {
+                FileLog.data(TAG, input);
                 // 0: rpm
                 // 1: mph
                 // 2: percent
                 // 3: percent
-                ReceiveData data;
-                try {
-                    data = new ObjectMapper().readValue(input, ReceiveData.class);
+                String[] data;
+//                data = new ObjectMapper().readValue(input, ReceiveData.class);
 
-                    mRpmText.setText(data.r);
-                    mMphText.setText(data.s);
-                    mShockLeftText.setText(data.sl);
-                    mShockRightText.setText(data.sr);
+                data = input.trim().split(" ");
+
+                if (data.length < 4) {
+                    Log.e(TAG, "Garbled data:" + input);
                 }
-                catch (IOException error) {
-
+                else {
+                    System.out.println(data[0] + ", " + data[1] + ", " + data[2] + ", " + data[3]);
+                    mRpmText.setText(data[0]);
+                    mMphText.setText(data[1]);
+                    mShockLeftText.setText(data[2]);
+                    mShockRightText.setText(data[3]);
                 }
             }
         }
@@ -174,8 +174,8 @@ public class MainActivity extends AppCompatActivity implements
 
         // TODO: make this work with multiple module names, or just rename the module
         // note that HC-05 will be the final module name but I'm developing with an H4S
-        addBluetoothFragment("H4S");
-//        addBluetoothFragment("HC-05");
+//        addBluetoothFragment("H4S");
+        addBluetoothFragment("HC-05");
 
         addAccelerometerFragment();
 

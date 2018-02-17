@@ -12,13 +12,13 @@
 #define AVERAGE_COUNT_TACHOMETER_MAX 2
 #define AVERAGE_COUNT_SPEEDOMETER_MAX 2
 #define TACHOMETER_PIN 7
-#define SPEEDOMETER_PIN 8
+#define SPEEDOMETER_PIN 4
 #define BAUD_RATE 115200
 #define ZERO_RPM_TIMEOUT 1000000
 #define ZERO_SPEED_TIMEOUT 1000000
 #define WHEEL_DIAMETER_INCHES 21.0
 // this is the maximum period of bluetooth transmission in milliseconds
-#define MIN_PRINT_DELAY 12
+#define MIN_PRINT_DELAY 100
 
 enum spinState {TRIGGER, ON, OFF};
 spinState currentTachometerState = OFF;
@@ -217,9 +217,10 @@ void printValues() {
   // sl: left shock position (%)
   // sr: right shock position (%)
 
-  // limit this to 100 Hz otherwise the 
+  // limit this to 100 Hz
   if (millis() - lastTimePrint > MIN_PRINT_DELAY ) {
-    Serial.println("{\"r\":" + String(finalRpm) + " \"s\":" + String(finalSpeed) + " \"sl\":" + String(shockLeft) + " \"sr\":" + String(shockRight) + "}");
+    Serial.println("         " + String(finalRpm) + " " + String(finalSpeed) + " " + String(shockLeft) + " " + String(shockRight));
+//    Serial.println("                 {\"sl\":" + String(shockLeft) + ", \"sr\":" + String(shockRight) + "}");
     lastTimePrint = millis();
   }
 }
