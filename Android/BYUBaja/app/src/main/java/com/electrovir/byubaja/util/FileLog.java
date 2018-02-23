@@ -15,6 +15,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -174,8 +176,8 @@ public class FileLog {
 
     //
 
-    public static String getFormattedDate() {
-        return new SimpleDateFormat("yyyy_mm_dd").format(new Date());
+    private static String getFormattedDate() {
+        return new SimpleDateFormat("yyyy_MM_dd").format(new Date());
     }
 
     private static String writeMessageToLog(String tag, String message, LogType level) {
@@ -205,11 +207,18 @@ public class FileLog {
     public static void saveFile(Context context) {
         //https://stackoverflow.com/a/46657146/5500690
         DownloadManager downloadManager = (DownloadManager) context.getSystemService(DOWNLOAD_SERVICE);
-        downloadManager.addCompletedDownload(logFile.getParentFile().getName(), logFile.getParentFile().getName(), true, "text/plain",logFile.getAbsolutePath(),logFile.length(),true);
-        downloadManager.addCompletedDownload(dataFile.getParentFile().getName(), dataFile.getParentFile().getName(), true, "text/plain",dataFile.getAbsolutePath(),dataFile.length(),true);
+        downloadManager.addCompletedDownload(logFile.getParentFile().getName(), logFile
+                .getParentFile().getName(), true, "text/plain",logFile.getAbsolutePath(),logFile
+                .length(),false);
+        downloadManager.addCompletedDownload(dataFile.getParentFile().getName(), dataFile
+                .getParentFile().getName(), true, "text/plain",dataFile.getAbsolutePath(),
+                dataFile.length(),false);
 
-        downloadManager.addCompletedDownload(logFile.getName(), logFile.getName(), true, "text/plain",logFile.getAbsolutePath(),logFile.length(),true);
-        downloadManager.addCompletedDownload(dataFile.getName(), dataFile.getName(), true, "text/plain",logFile.getAbsolutePath(),logFile.length(),true);
+        // I think this has to be done twice so that the media manager will actually pick it up
+        downloadManager.addCompletedDownload(logFile.getName(), logFile.getName(), true,
+                "text/plain",logFile.getAbsolutePath(),logFile.length(),false);
+        downloadManager.addCompletedDownload(dataFile.getName(), dataFile.getName(), true,
+                "text/plain",logFile.getAbsolutePath(),logFile.length(),false);
     }
 
 

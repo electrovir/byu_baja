@@ -174,8 +174,8 @@ public class MainActivity extends AppCompatActivity implements
 
         // TODO: make this work with multiple module names, or just rename the module
         // note that HC-05 will be the final module name but I'm developing with an H4S
-//        addBluetoothFragment("H4S");
-        addBluetoothFragment("HC-05");
+        addBluetoothFragment("H4S");
+//        addBluetoothFragment("HC-05");
 
         addAccelerometerFragment();
 
