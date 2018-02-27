@@ -1,23 +1,19 @@
 package com.electrovir.byubaja;
 
 import android.app.ActionBar;
-import android.os.Environment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.io.IOException;
 
 import com.electrovir.byubaja.util.FileLog;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class MainActivity extends AppCompatActivity implements
         BluetoothConnectionFragment.BluetoothConnectionCaller, AccelerometerFragment.AccelerometerCaller {
@@ -25,57 +21,86 @@ public class MainActivity extends AppCompatActivity implements
 
     TextView mRpmText;
     TextView mMphText;
-    TextView mCoords0;
-    TextView mCoords1;
-    TextView mCoords2;
-    TextView mShockLeftText;
-    TextView mShockRightText;
+    ProgressBar mTachoDial;
+    ProgressBar mShockLeftProgress;
+    ProgressBar mShockRightProgress;
+    View mBluetoothIndicator;
+    boolean bluetoothDeviceConnected = false;
     private static final String TAG_BLUETOOTH_FRAGMENT = "bluetoothFragment";
     private static final String TAG_ACCELEROMETER_FRAGMENT = "accelerometerFragment";
 
+    private static final int DATA_START = 2;
+    private static final int MAX_TACH_PROGRESS = 60;
+    private static final int MAX_TACH_READING = 4000;
+    private static final String LINE_BREAK_CHARACTER = ";";
+    private static final String DATA_BREAK_CHARACTER = ",";
+
     private BluetoothConnectionFragment mBluetoothFragment;
     private AccelerometerFragment mAccelerometerFragment;
-//    private static final String FILE_NAME = "testLog.txt";
-//    FileOutputStream fileOutput;
-    File logFile;
-//    FileWriter logFileWriter;
 
     public void handleBluetoothInput(String input) {
         final boolean testing = false;
-        System.out.println("b");
         if (testing) {
             System.out.println(input);
         }
         else {
             if (input != null) {
-                FileLog.data(TAG, input);
-                // 0: rpm
-                // 1: mph
-                // 2: percent
-                // 3: percent
-                String[] data;
-//                data = new ObjectMapper().readValue(input, ReceiveData.class);
+                // 0: count
+                // 1: ms
+                // 2: rpm
+                // 3: mph
+                // 4: percent
+                // 5: percent
+                String[] lines = input.trim().split(LINE_BREAK_CHARACTER);
 
-                data = input.trim().split(" ");
+                if (lines.length < 2) {
+                    FileLog.e(TAG, "Garbled data:" + input);
+                    return;
+                }
 
-                if (data.length < 4) {
-                    Log.e(TAG, "Garbled data:" + input);
+                String[] data = lines[0].trim().split(DATA_BREAK_CHARACTER);
+
+                if (data.length < 6) {
+                    FileLog.e(TAG, "Garbled data:" + input);
+                    return;
                 }
-                else {
-                    System.out.println(data[0] + ", " + data[1] + ", " + data[2] + ", " + data[3]);
-                    mRpmText.setText(data[0]);
-                    mMphText.setText(data[1]);
-                    mShockLeftText.setText(data[2]);
-                    mShockRightText.setText(data[3]);
+
+                String dataLogString =  input.trim().replace(LINE_BREAK_CHARACTER, " " +
+                        bluetoothDeviceConnected + " " + FileLog.getTimeStamp() + "\n").trim();
+
+                FileLog.data(TAG, dataLogString);
+                try {
+                    mRpmText.setText(data[DATA_START]);
+                    mTachoDial.setProgress(Integer.valueOf(data[DATA_START]) * MAX_TACH_PROGRESS / MAX_TACH_READING);
                 }
+                catch (NumberFormatException e) {
+                    FileLog.e(TAG, "Invalid value for rpm:" + data[DATA_START]);
+                }
+                mMphText.setText(data[DATA_START + 1]);
+                mShockLeftProgress.setProgress(Integer.parseInt(data[DATA_START + 2]));
+                mShockRightProgress.setProgress(Integer.parseInt(data[DATA_START + 3]));
             }
         }
     }
 
+    @Override
+    public void bluetoothConnectionStatus(boolean status) {
+
+        bluetoothDeviceConnected = status;
+
+        if (status) {
+            mBluetoothIndicator.setBackgroundColor(ContextCompat.getColor(this, R.color
+                    .bluetoothConnected));
+        }
+        else {
+            FileLog.i(TAG, "Bluetooth disconnected.");
+            mBluetoothIndicator.setBackgroundColor(ContextCompat.getColor(this, R.color
+                    .bluetoothDisconnected));
+        }
+    }
+
     public void handleAccelerometerInput(float value0, float value1, float value2) {
-        mCoords0.setText(Float.toString(value0));
-        mCoords1.setText(Float.toString(value1));
-        mCoords2.setText(Float.toString(value2));
+
     }
 
     public void bluetoothError(String message) {
@@ -123,54 +148,20 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
-    public void appendLog(String text) {
-//        int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-
-//        verifyStoragePermissions(this);
-
-        logFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "byu_baja_log_fie.txt");
-        if (!logFile.exists())
-        {
-            try
-            {
-                logFile.createNewFile();
-            }
-            catch (IOException e)
-            {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-        try
-        {
-            //BufferedWriter for performance, true to set append to file flag
-            BufferedWriter buf = new BufferedWriter(new FileWriter(logFile, true));
-            buf.append(text);
-            buf.newLine();
-            buf.close();
-        }
-        catch (IOException e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.instrument_cluster);
-        hideStatusBar();
+//        hideStatusBar();
 
         // for display the received data from the Arduino
         mRpmText = (TextView) findViewById(R.id.tachometer);
         mMphText = (TextView) findViewById(R.id.speedometer);
-        mCoords0 = (TextView) findViewById(R.id.textView_0);
-        mCoords1 = (TextView) findViewById(R.id.textView_1);
-        mCoords2 = (TextView) findViewById(R.id.textView_2);
+        mTachoDial = (ProgressBar) findViewById(R.id.tachometerProgress);
+        mBluetoothIndicator = findViewById(R.id.bluetooth_status);
 
-        mShockRightText = (TextView) findViewById(R.id.shock_left);
-        mShockLeftText = (TextView) findViewById(R.id.shock_right);
+        mShockLeftProgress = (ProgressBar) findViewById(R.id.shock_front_left_position);
+        mShockRightProgress = (ProgressBar) findViewById(R.id.shock_front_right_position);
 
         // TODO: make this work with multiple module names, or just rename the module
         // note that HC-05 will be the final module name but I'm developing with an H4S
@@ -190,6 +181,7 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onResume() {
         super.onResume();
+        hideStatusBar();
     }
 
     @Override

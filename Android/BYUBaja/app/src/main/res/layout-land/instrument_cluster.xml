@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/colorBackground"
     tools:context="com.electrovir.byubaja.MainActivity">
 
     <ProgressBar
@@ -26,142 +26,112 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <GridLayout
-        android:layout_width="500sp"
+    <ImageView
+        android:id="@+id/bluetooth_status"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:columnCount="2"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="164dp"
-        android:id="@+id/gridLayout">
+        android:background="@color/bluetoothDisconnected"
+        app:srcCompat="@android:drawable/stat_sys_data_bluetooth"/>
 
-        <TextView
-            android:id="@+id/speedometer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:clickable="false"
-            android:text="0"
-            android:textAlignment="textEnd"
-            android:textAppearance="@android:style/TextAppearance.Theme"
-            android:textSize="@dimen/testingTextSize"
-            android:textStyle="bold"/>
+    <ProgressBar
+        android:id="@+id/shock_front_right_position"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/shock_front_left_position"
+        android:max="100"
+        android:min="0"
+        android:progress="3"
+        android:progressDrawable="@drawable/shock_drawable"
+        android:rotation="-90"/>
 
-        <TextView
-            android:id="@+id/mphLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/textView_2"
-            android:layout_marginEnd="37dp"
-            android:paddingRight="@dimen/testLabelPadding"
-            android:text="@string/speedLabel"
-            android:textSize="@dimen/testLabelSize"
-            tools:layout_editor_absoluteY="273dp"/>
+    <ProgressBar
+        android:id="@+id/shock_front_left_position"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_alignTop="@+id/tachometerProgress"
+        android:layout_marginStart="43dp"
+        android:layout_toEndOf="@+id/tachometerProgress"
+        android:max="100"
+        android:min="0"
+        android:progress="5"
+        android:progressDrawable="@drawable/shock_drawable"
+        android:rotation="-90"/>
 
-        <TextView
-            android:id="@+id/tachometer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:clickable="false"
-            android:text="0"
-            android:textAppearance="@android:style/TextAppearance.Theme"
-            android:textSize="@dimen/testingTextSize"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/rpmLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="0dp"
-            android:layout_toStartOf="@+id/tachometer"
-            android:paddingRight="@dimen/testLabelPadding"
-            android:text="@string/tachLabel"
-            android:textSize="@dimen/testLabelSize"
-            tools:layout_editor_absoluteY="273dp"/>
-    </GridLayout>
+    <ProgressBar
+        android:id="@+id/tachometerProgress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="440dp"
+        android:layout_height="440dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-20dp"
+        android:max="100"
+        android:min="0"
+        android:progress="60"
+        android:progressDrawable="@drawable/tach_drawable"
+        android:rotation="162"/>
 
     <TextView
-        android:id="@+id/textView_0"
+        android:id="@+id/speedometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView_1"
-        android:layout_alignTop="@+id/gridLayout"
-        android:layout_marginTop="15dp"
-        android:text="TextView"
-        android:visibility="gone"/>
+        android:layout_above="@+id/mphLabel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-30dp"
+        android:clickable="false"
+        android:includeFontPadding="false"
+        android:text="35"
+        android:textAlignment="center"
+        android:textAppearance="@android:style/TextAppearance.Theme"
+        android:textSize="@dimen/speedometerTextSize"
+        android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/textView_1"
+        android:id="@+id/mphLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/gridLayout"
-        android:layout_marginStart="99dp"
-        android:layout_marginTop="69dp"
-        android:layout_toEndOf="@+id/progressBar"
-        android:text="TextView"
-        android:visibility="gone"/>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:text="@string/speedLabel"
+        android:textAlignment="center"
+        android:textSize="@dimen/unitTextSize"
+        tools:layout_editor_absoluteY="273dp"/>
 
     <TextView
-        android:id="@+id/textView_2"
+        android:id="@+id/tachometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView_0"
-        android:layout_centerVertical="true"
-        android:text="TextView"
-        android:visibility="gone"/>
+        android:layout_above="@+id/tachometerProgress"
+        android:layout_toStartOf="@+id/space2"
+        android:clickable="false"
+        android:text="0"
+        android:textAlignment="textEnd"
+        android:textAppearance="@android:style/TextAppearance.Theme"
+        android:textSize="@dimen/tachometerTextSize"
+        android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/rpmLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView_2"
-        android:layout_alignBottom="@+id/textView_2"
-        android:layout_toStartOf="@+id/textView_2"
-        android:text="value 2: "
-        android:visibility="gone"/>
+        android:layout_above="@+id/tachometerProgress"
+        android:layout_marginLeft="4dp"
+        android:layout_toEndOf="@+id/tachometer"
+        android:paddingRight="@dimen/testLabelPadding"
+        android:text="@string/tachLabel"
+        android:textSize="@dimen/unitTextSize"/>
 
-    <TextView
-        android:id="@+id/textView6"
+    <Space
+        android:id="@+id/space2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView7"
-        android:layout_alignTop="@+id/textView_0"
-        android:text="value 0: "
-        android:visibility="gone"/>
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView_1"
-        android:layout_alignBottom="@+id/textView_1"
-        android:layout_toStartOf="@+id/textView_2"
-        android:text="value 1: "
-        android:visibility="gone"/>
-
-    <TextView
-        android:id="@+id/shock_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/shock_left"
-        android:layout_alignBottom="@+id/shock_left"
-        android:layout_marginEnd="43dp"
-        android:layout_toStartOf="@+id/gridLayout"
-        android:text="TextView"/>
-
-    <TextView
-        android:id="@+id/shock_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/gridLayout"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="157dp"
-        android:layout_toEndOf="@+id/progressBar"
-        android:text="TextView"/>
+        android:layout_above="@+id/tachometerProgress"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

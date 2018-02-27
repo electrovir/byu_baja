@@ -9,4 +9,8 @@
     <color name="testColor2">#00ff00</color>
     <color name="colorBackgroundTransparent">#0000122b</color>
     <color name="colorFuel">#00aa00</color>
+
+
+    <color name="bluetoothConnected">#096CFF</color>
+    <color name="bluetoothDisconnected">#ff002d</color>
 </resources>

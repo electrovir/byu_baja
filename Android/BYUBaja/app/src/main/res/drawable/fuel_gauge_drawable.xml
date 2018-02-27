@@ -4,7 +4,7 @@
     <item android:id="@android:id/background">
         <shape>
             <gradient
-                android:startColor="#000000"
+                android:startColor="#00000044"
                 android:centerColor="#000000"
                 android:centerY="1.0"
                 android:endColor="#000000"

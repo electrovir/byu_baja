@@ -118,7 +118,10 @@ public class FileLog {
         int lineNumber = traceElement.getLineNumber();
         String fileName = traceElement.getFileName();
 
-        String formattedString = fileName + ":" + lineNumber + " " + logTypeStrings.get(level) + "/" + tag + ":" + message;
+//        String formattedString = fileName + ":" + lineNumber + " " + logTypeStrings.get(level) + "/" + tag + ":" + message;
+        String formattedString = getTimeStamp() + " "  + logTypeStrings.get(level) + "/" + tag +
+                ":" +
+                message;
 
         return formattedString;
     }
@@ -167,6 +170,7 @@ public class FileLog {
 
     public static void setDefaultFiles(Activity activity, String appName) throws IOException {
         final File parentDir = new File(getDownloadsFolder(), appName);
+
         File logDir = new File(parentDir, "logs");
         File dataDir = new File(parentDir, "data");
 
@@ -174,7 +178,9 @@ public class FileLog {
         dataFile = setupFile(activity, dataDir, "data");
     }
 
-    //
+    public static String getTimeStamp() {
+        return Long.toString((new Date()).getTime() / 1000);
+    }
 
     private static String getFormattedDate() {
         return new SimpleDateFormat("yyyy_MM_dd").format(new Date());
@@ -207,6 +213,7 @@ public class FileLog {
     public static void saveFile(Context context) {
         //https://stackoverflow.com/a/46657146/5500690
         DownloadManager downloadManager = (DownloadManager) context.getSystemService(DOWNLOAD_SERVICE);
+
         downloadManager.addCompletedDownload(logFile.getParentFile().getName(), logFile
                 .getParentFile().getName(), true, "text/plain",logFile.getAbsolutePath(),logFile
                 .length(),false);

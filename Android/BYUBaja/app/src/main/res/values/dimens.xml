@@ -1,8 +1,10 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="defaultTextSize">20sp</dimen>
-    <dimen name="speedometerTextSize">250sp</dimen>
+    <dimen name="speedometerTextSize">200sp</dimen>
     <dimen name="testingTextSize">150sp</dimen>
     <dimen name="testLabelSize">50sp</dimen>
     <dimen name="testLabelPadding">20sp</dimen>
+    <dimen name="unitTextSize">20sp</dimen>
+    <dimen name="tachometerTextSize">30sp</dimen>
 </resources>

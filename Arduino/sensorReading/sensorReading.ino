@@ -18,7 +18,8 @@
 #define ZERO_SPEED_TIMEOUT 1000000
 #define WHEEL_DIAMETER_INCHES 21.0
 // this is the maximum period of bluetooth transmission in milliseconds
-#define MIN_PRINT_DELAY 100
+#define MIN_PRINT_DELAY 25
+#define MIN_SAMPLE_DELAY 5
 
 enum spinState {TRIGGER, ON, OFF};
 spinState currentTachometerState = OFF;
@@ -30,6 +31,7 @@ unsigned long lastTimeTachometer = 0;
 unsigned long averageTotalTimeTachometer = 0;
 int averageCounterTachometer = 0;
 bool zeroedTachometer = false;
+int printCounter = 0;
 
 unsigned long lastTimeSpeedometer = 0;
 unsigned long averageTotalTimeSpeedometer = 0;
@@ -63,6 +65,7 @@ shockState currentShockState = READ;
 //
 
 unsigned long lastTimePrint = 0;
+unsigned long lastTimeSample = 0;
 
 void setup() {
   // initialize serial:
@@ -80,7 +83,7 @@ void loop() {
   readSpeedometer(newTime);
   readPotentiometers(newTime);
 //  uncomment the next line for testing max transmission frequency
-//  printValues();
+  printValues();
 }
 
 void readPotentiometers(unsigned long newTime) {
@@ -210,18 +213,40 @@ void readSpeedometer(unsigned long newTime) {
   currentSpeedometerState = nextSpeedometerState;
 }
 
+String sendString = "";
+unsigned long lastValuesTime = 0;
+
+String getValues(int counter) {
+  // finalRpm: revolutions (rpm)
+  // finalSpeed: speed (mph)
+  // shockLeft: left shock position (%)
+  // shockRight: right shock position (%)
+  
+  unsigned long newTime = millis();
+  unsigned long difference = newTime - lastValuesTime;
+  lastValuesTime = newTime;
+  
+//  return String(counter) + "," + String(difference) + "," + String(500+printCounter*3) + "," + String(printCounter/30) + "," + String(99-printCounter/20) + "," + String(99-printCounter/30);
+  return String(counter) + "," + String(difference) + "," + String(finalRpm) + "," + String(finalSpeed) + "," + String(shockLeft) + "," + String(shockRight));
+}
 
 void printValues() {
-  // r: revolutions (rpm)
-  // s: speed (mph)
-  // sl: left shock position (%)
-  // sr: right shock position (%)
 
-  // limit this to 100 Hz
+  if (millis() - lastTimeSample > MIN_SAMPLE_DELAY) {
+    sendString += getValues() + ";";
+    
+    printCounter++;
+    if (printCounter > 999) {
+      printCounter = 0;
+    }
+    lastTimeSample = millis();
+  }
+  
   if (millis() - lastTimePrint > MIN_PRINT_DELAY ) {
-    Serial.println("         " + String(finalRpm) + " " + String(finalSpeed) + " " + String(shockLeft) + " " + String(shockRight));
-//    Serial.println("                 {\"sl\":" + String(shockLeft) + ", \"sr\":" + String(shockRight) + "}");
+    Serial.println("       " + sendString);
+    sendString = "";
     lastTimePrint = millis();
+    sendString = "";
   }
 }
 

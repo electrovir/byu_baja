@@ -46,6 +46,7 @@ public class BluetoothConnectionFragment extends Fragment {
     private BluetoothConnectionThread mConnectedThread;
     private BluetoothConnectionCaller caller = null;
     private BluetoothSocket mBluetoothSocket = null;
+    private boolean bluetoothConnected = false;
 
     public BluetoothConnectionFragment() {
         // Required empty public constructor
@@ -67,7 +68,7 @@ public class BluetoothConnectionFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         this.actvitiyContext.unregisterReceiver(this.mReceiver);
-//        this.caller = null;
+        this.caller = null;
     }
 
     public static BluetoothConnectionFragment newInstance(String bluetoothName) {
@@ -76,6 +77,11 @@ public class BluetoothConnectionFragment extends Fragment {
         args.putString(BLUETOOTH_MODULE_NAME_KEY, bluetoothName);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    private void updateBluetoothConnectionStatus(boolean connected) {
+        bluetoothConnected = connected;
+        caller.bluetoothConnectionStatus(connected);
     }
 
     @Override
@@ -87,7 +93,7 @@ public class BluetoothConnectionFragment extends Fragment {
             mBluetoothModuleName = getArguments().getString(BLUETOOTH_MODULE_NAME_KEY);
         }
 
-        Log.d(LOG_TAG, "Creating anew BluetoothConnectionFragment");
+        Log.d(LOG_TAG, "Creating a new BluetoothConnectionFragment");
 
         // set up the handler for handling bluetooth messages
         bluetoothMessageHandler = new Handler() {
@@ -150,6 +156,8 @@ public class BluetoothConnectionFragment extends Fragment {
             //Device is now connected
             else if (BluetoothDevice.ACTION_ACL_CONNECTED.equals(action)) {
                 Log.i(LOG_TAG, "bluetooth action: ACL connected: " + deviceName);
+                updateBluetoothConnectionStatus(true);
+
             }
             //Done searching
             else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
@@ -165,6 +173,7 @@ public class BluetoothConnectionFragment extends Fragment {
             //Device has disconnected
             else if (BluetoothDevice.ACTION_ACL_DISCONNECTED.equals(action)) {
                 Log.i(LOG_TAG, "bluetooth action: ACL disconnected: " + deviceName);
+                updateBluetoothConnectionStatus(false);
             }
         }
     };
@@ -253,11 +262,12 @@ public class BluetoothConnectionFragment extends Fragment {
                         } else {
                             Log.i(LOG_TAG, "Continuous bluetooth checking: bluetooth socket not connected.");
                         }
-                        Log.i(LOG_TAG, "Continuous bluetooth checking: attempting to open bluetooth socket.");
+                        Log.i(LOG_TAG, "Continuous bluetooth checking: attempting to open " +
+                                        "bluetooth socket.\n");
                         establishBluetoothConnection(mBluetoothDevice, mBluetoothAdapter, bluetoothMessageHandler);
                     }
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(100);
                     } catch (InterruptedException e) {
                         Log.e(LOG_TAG, "Continuous bluetooth checking: error sleeping the thread. exiting continuous checking.");
                         break;
@@ -398,11 +408,11 @@ public class BluetoothConnectionFragment extends Fragment {
         super.onResume();
         Log.d(LOG_TAG, "...entering onResume()...");
 
-        establishBluetoothConnection(this.mBluetoothDevice, this.mBluetoothAdapter, this.bluetoothMessageHandler);
-
-        if (this.mConnectedThread == null) {
-            this.caller.bluetoothError("Bluetooth device connection failed.");
-        }
+//        establishBluetoothConnection(this.mBluetoothDevice, this.mBluetoothAdapter, this.bluetoothMessageHandler);
+//
+//        if (this.mConnectedThread == null) {
+//            this.caller.bluetoothError("Bluetooth device connection failed.");
+//        }
 
         if (mContinuousCheckingThread != null) {
             mContinuousCheckingThread.resumeChecking();
@@ -434,5 +444,6 @@ public class BluetoothConnectionFragment extends Fragment {
     interface BluetoothConnectionCaller {
         void handleBluetoothInput(String inputString);
         void bluetoothError(String message);
+        void bluetoothConnectionStatus(boolean status);
     }
 }
