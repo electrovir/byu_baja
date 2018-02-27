@@ -60,3 +60,6 @@ Each one is connected differently as follows:
 
 ![](circuit_diagram.png)
 
+## Circuit Assembled
+
+
