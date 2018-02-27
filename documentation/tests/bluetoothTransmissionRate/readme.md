@@ -1,5 +1,11 @@
 # Bluetooth Transmission Speed Test
 
+## UPDATE
+
+This test result is pretty much useless in practice as every little change affects it dramatically. However, I still a utilize similar testing procedures to tweak my transmission rates after each change.
+
+I've discovered that if I only send data in big chunks that the data sampling speed can then be increased. At the moment of writing this, for example, data is saved into a long string about every ``5 ms`` and then at about every ``25 ms`` the data is transmitted.
+
 ## Materials
 
   * Arduino with bluetooth module
