@@ -33,6 +33,8 @@ public class BluetoothConnectionFragment extends Fragment {
 
     private static final int BLUETOOTH_ENABLE_CODE = 1;
 
+    private static final int BLUETOOTH_CHECK_INTERVAL = 100;
+
     // SPP UUID service
     private static final UUID SPP_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
@@ -43,6 +45,7 @@ public class BluetoothConnectionFragment extends Fragment {
     private BluetoothDevice mBluetoothDevice = null;
     private Context actvitiyContext = null;
     ContinuousBluetoothDeviceCheckThread mContinuousCheckingThread;
+    // TODO: figure out what mConnectedThread is and if I can use it for anything
     private BluetoothConnectionThread mConnectedThread;
     private BluetoothConnectionCaller caller = null;
     private BluetoothSocket mBluetoothSocket = null;
@@ -256,21 +259,26 @@ public class BluetoothConnectionFragment extends Fragment {
             while(true) {
                 if (checking) {
                     Log.i(LOG_TAG, "Continuous bluetooth checking: checking bluetooth connection.");
-                    if (mBluetoothSocket == null || !mBluetoothSocket.isConnected()) {
+
+                    if (mBluetoothSocket == null || !mBluetoothSocket.isConnected() || !bluetoothConnected) {
                         if (mBluetoothSocket == null) {
                             Log.i(LOG_TAG, "Continuous bluetooth checking: null bluetooth socket.");
                         } else {
                             Log.i(LOG_TAG, "Continuous bluetooth checking: bluetooth socket not connected.");
                         }
+
                         Log.i(LOG_TAG, "Continuous bluetooth checking: attempting to open " +
                                         "bluetooth socket.\n");
                         establishBluetoothConnection(mBluetoothDevice, mBluetoothAdapter, bluetoothMessageHandler);
                     }
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        Log.e(LOG_TAG, "Continuous bluetooth checking: error sleeping the thread. exiting continuous checking.");
-                        break;
+                    else {
+                        try {
+                            Log.i(LOG_TAG, "Continuous bluetooth checking: sleeping");
+                            Thread.sleep(BLUETOOTH_CHECK_INTERVAL);
+                        } catch (InterruptedException e) {
+                            Log.e(LOG_TAG, "Continuous bluetooth checking: error sleeping the thread. exiting continuous checking.");
+                            break;
+                        }
                     }
                 }
             }
@@ -396,23 +404,14 @@ public class BluetoothConnectionFragment extends Fragment {
     }
 
     private void establishBluetoothConnection(BluetoothDevice bluetoothDevice, BluetoothAdapter bluetoothAdapter, Handler bluetoothMessageHandler) {
-        BluetoothSocket bluetoothSocket = createBluetoothSocket(bluetoothDevice);
-        BluetoothConnectionThread connectedThread = connectToBluetoothSocket(bluetoothSocket, bluetoothAdapter, bluetoothMessageHandler);
-
-        mBluetoothSocket = bluetoothSocket;
-        mConnectedThread = connectedThread;
+        mBluetoothSocket = createBluetoothSocket(bluetoothDevice);
+        mConnectedThread = connectToBluetoothSocket(mBluetoothSocket, bluetoothAdapter, bluetoothMessageHandler);
     }
 
     @Override
     public void onResume() {
         super.onResume();
         Log.d(LOG_TAG, "...entering onResume()...");
-
-//        establishBluetoothConnection(this.mBluetoothDevice, this.mBluetoothAdapter, this.bluetoothMessageHandler);
-//
-//        if (this.mConnectedThread == null) {
-//            this.caller.bluetoothError("Bluetooth device connection failed.");
-//        }
 
         if (mContinuousCheckingThread != null) {
             mContinuousCheckingThread.resumeChecking();

@@ -7,4 +7,8 @@
     <dimen name="testLabelPadding">20sp</dimen>
     <dimen name="unitTextSize">20sp</dimen>
     <dimen name="tachometerTextSize">30sp</dimen>
+    <dimen name="button_alpha">1</dimen>
+    <dimen name="disabled_button_alpha">0.5</dimen>
+    <dimen name="big_button_text_size">50sp</dimen>
+
 </resources>

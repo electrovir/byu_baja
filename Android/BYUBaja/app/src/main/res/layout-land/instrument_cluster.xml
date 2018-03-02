@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:background="@color/bluetoothDisconnected"
+        android:background="@color/colorBluetoothDisconnected"
         app:srcCompat="@android:drawable/stat_sys_data_bluetooth"/>
 
     <ProgressBar
@@ -133,5 +133,28 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/tachometerProgress"
         android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/mini_run_stop"
+        style="@style/stop_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/progressBar"
+        android:enabled="false"
+        android:text="@string/miniRunStop"
+        android:textAlignment="center"
+        android:textSize="@dimen/big_button_text_size"/>
+
+    <Button
+        android:id="@+id/mini_run_start"
+        style="@style/start_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/progressBar"
+        android:layout_toEndOf="@+id/progressBar"
+        android:text="@string/miniRunStart"
+        android:textAlignment="center"
+        android:textSize="@dimen/big_button_text_size"/>
 
 </RelativeLayout>

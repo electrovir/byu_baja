@@ -18,4 +18,14 @@
         <item name="android:textSize">@dimen/defaultTextSize</item>
     </style>
 
+    <style name="start_button" parent="@android:style/Widget.Material.Button">
+        <item name="android:backgroundTint">@color/start_button_color</item>
+        <item name="android:textColor">@color/button_text_color</item>
+    </style>
+
+    <style name="stop_button" parent="@android:style/Widget.Material.Button">
+        <item name="android:backgroundTint">@color/stop_button_color</item>
+        <item name="android:textColor">@color/button_text_color</item>
+    </style>
+
 </resources>

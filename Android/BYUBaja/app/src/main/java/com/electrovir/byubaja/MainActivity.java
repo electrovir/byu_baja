@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,18 +19,23 @@ import com.electrovir.byubaja.util.FileLog;
 public class MainActivity extends AppCompatActivity implements
         BluetoothConnectionFragment.BluetoothConnectionCaller, AccelerometerFragment.AccelerometerCaller {
     private static final String TAG = "BYU_BAJA_MAIN";
+    private static final String APP_NAME = "byu_baja";
 
     TextView mRpmText;
     TextView mMphText;
-    ProgressBar mTachoDial;
+    ProgressBar mTachDial;
     ProgressBar mShockLeftProgress;
     ProgressBar mShockRightProgress;
     View mBluetoothIndicator;
+    Button mMiniRunStart;
+    Button mMiniRunStop;
     boolean bluetoothDeviceConnected = false;
     private static final String TAG_BLUETOOTH_FRAGMENT = "bluetoothFragment";
     private static final String TAG_ACCELEROMETER_FRAGMENT = "accelerometerFragment";
 
     private static final int DATA_START = 2;
+    // this is based off of the rotational position of the tachometer drawable
+    // at 60% progress the progress bar will be symmetrical and thus appear like 100%
     private static final int MAX_TACH_PROGRESS = 60;
     private static final int MAX_TACH_READING = 4000;
     private static final String LINE_BREAK_CHARACTER = ";";
@@ -37,6 +43,11 @@ public class MainActivity extends AppCompatActivity implements
 
     private BluetoothConnectionFragment mBluetoothFragment;
     private AccelerometerFragment mAccelerometerFragment;
+    private FileLog mainLogger;
+    private FileLog miniRunLogger;
+    private int miniRunCount = 0;
+
+    private boolean miniRunStarted = false;
 
     public void handleBluetoothInput(String input) {
         final boolean testing = false;
@@ -54,27 +65,33 @@ public class MainActivity extends AppCompatActivity implements
                 String[] lines = input.trim().split(LINE_BREAK_CHARACTER);
 
                 if (lines.length < 2) {
-                    FileLog.e(TAG, "Garbled data:" + input);
+                    mainLogger.e(TAG, "Garbled data:" + input);
                     return;
                 }
 
                 String[] data = lines[0].trim().split(DATA_BREAK_CHARACTER);
 
                 if (data.length < 6) {
-                    FileLog.e(TAG, "Garbled data:" + input);
+                    mainLogger.e(TAG, "Garbled data:" + input);
                     return;
                 }
 
                 String dataLogString =  input.trim().replace(LINE_BREAK_CHARACTER, " " +
                         bluetoothDeviceConnected + " " + FileLog.getTimeStamp() + "\n").trim();
 
-                FileLog.data(TAG, dataLogString);
+                // log the data
+                mainLogger.data(TAG, dataLogString);
+                // also log data to the mini run file
+                if (miniRunStarted) {
+                    miniRunLogger.data(TAG, dataLogString);
+                }
+
                 try {
                     mRpmText.setText(data[DATA_START]);
-                    mTachoDial.setProgress(Integer.valueOf(data[DATA_START]) * MAX_TACH_PROGRESS / MAX_TACH_READING);
+                    mTachDial.setProgress(Integer.valueOf(data[DATA_START]) * MAX_TACH_PROGRESS / MAX_TACH_READING);
                 }
                 catch (NumberFormatException e) {
-                    FileLog.e(TAG, "Invalid value for rpm:" + data[DATA_START]);
+                    mainLogger.e(TAG, "Invalid value for rpm:" + data[DATA_START]);
                 }
                 mMphText.setText(data[DATA_START + 1]);
                 mShockLeftProgress.setProgress(Integer.parseInt(data[DATA_START + 2]));
@@ -90,17 +107,17 @@ public class MainActivity extends AppCompatActivity implements
 
         if (status) {
             mBluetoothIndicator.setBackgroundColor(ContextCompat.getColor(this, R.color
-                    .bluetoothConnected));
+                    .colorBluetoothConnected));
         }
         else {
-            FileLog.i(TAG, "Bluetooth disconnected.");
+            mainLogger.i(TAG, "Bluetooth disconnected.");
             mBluetoothIndicator.setBackgroundColor(ContextCompat.getColor(this, R.color
-                    .bluetoothDisconnected));
+                    .colorBluetoothDisconnected));
         }
     }
 
     public void handleAccelerometerInput(float value0, float value1, float value2) {
-
+        // TODO: figure out how to get useful data out of the accelerometers
     }
 
     public void bluetoothError(String message) {
@@ -136,6 +153,27 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
+    private void startMiniRun() {
+        try {
+            miniRunLogger.setDataFile(this, APP_NAME, "mini_run_" + Integer.toString(miniRunCount) + "" +
+                    ".txt");
+            miniRunStarted = true;
+            mMiniRunStart.setEnabled(false);
+            mMiniRunStop.setEnabled(true);
+        }
+        catch (IOException error) {
+            mainLogger.e(TAG, "Failed to start miniRun logger.");
+        }
+    }
+
+    private void stopMiniRun() {
+        miniRunStarted = false;
+        mMiniRunStart.setEnabled(true);
+        mMiniRunStop.setEnabled(false);
+        miniRunLogger.saveFiles(this);
+        miniRunCount++;
+    }
+
     private void addAccelerometerFragment() {
         FragmentManager fm = this.getSupportFragmentManager();
 
@@ -152,16 +190,36 @@ public class MainActivity extends AppCompatActivity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.instrument_cluster);
-//        hideStatusBar();
+
+        mainLogger = new FileLog(this, APP_NAME);
+        miniRunLogger = new FileLog();
 
         // for display the received data from the Arduino
         mRpmText = (TextView) findViewById(R.id.tachometer);
         mMphText = (TextView) findViewById(R.id.speedometer);
-        mTachoDial = (ProgressBar) findViewById(R.id.tachometerProgress);
+        mTachDial = (ProgressBar) findViewById(R.id.tachometerProgress);
         mBluetoothIndicator = findViewById(R.id.bluetooth_status);
 
         mShockLeftProgress = (ProgressBar) findViewById(R.id.shock_front_left_position);
         mShockRightProgress = (ProgressBar) findViewById(R.id.shock_front_right_position);
+
+        mMiniRunStart = (Button) findViewById(R.id.mini_run_start);
+        mMiniRunStop = (Button) findViewById(R.id.mini_run_stop);
+
+        mMiniRunStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startMiniRun();
+            }
+        });
+
+        mMiniRunStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopMiniRun();
+            }
+        });
+
 
         // TODO: make this work with multiple module names, or just rename the module
         // note that HC-05 will be the final module name but I'm developing with an H4S
@@ -169,13 +227,6 @@ public class MainActivity extends AppCompatActivity implements
 //        addBluetoothFragment("HC-05");
 
         addAccelerometerFragment();
-
-        try {
-            FileLog.setDefaultFiles(this, "byu_baja");
-        }
-        catch (IOException e) {
-            Log.e(TAG, "Error creating file logger: " + e.getMessage());
-        }
     }
 
     @Override
@@ -187,6 +238,7 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onPause() {
         super.onPause();
-        FileLog.saveFile(this);
+        mainLogger.saveFiles(this);
+        miniRunLogger.saveFiles(this);
     }
 }

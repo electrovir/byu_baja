@@ -15,18 +15,18 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import static android.content.Context.DOWNLOAD_SERVICE;
 
 public class FileLog {
 
-    public static final String LOG_TAG = "FILE_LOGGER";
-    private static boolean permissionAsked = false;
+    private static final String LOG_TAG = "FILE_LOGGER";
+    private boolean permissionAsked = false;
 
 
     private enum LogType {
@@ -49,68 +49,78 @@ public class FileLog {
         logTypeStrings.put(LogType.WTF, "WTF");
     }
 
-    private static File logFile;
-    private static File dataFile;
+    public FileLog() {}
 
-    public static String d(String tag, String message) {
+    public FileLog(Activity activity, String appName) {
+        try {
+            setDefaultFiles(activity, appName);
+        }
+        catch (IOException e) {
+            Log.e(LOG_TAG, "Failed to initiae log file.");
+        }
+    }
+
+    private File logFile;
+    private File dataFile;
+
+    public String d(String tag, String message) {
         Log.d(tag, message);
         return writeMessageToLog(tag, message, LogType.DEBUG);
     }
-    public static String d(String tag, String message, Throwable exception) {
+    public String d(String tag, String message, Throwable exception) {
         Log.d(tag, message, exception);
         return writeMessageToLog(tag, message + " exception: " + exception.getMessage(), LogType.DEBUG);
     }
-    public static String e(String tag, String message) {
+    public String e(String tag, String message) {
         Log.e(tag, message);
         return writeMessageToLog(tag, message, LogType.ERROR);
     }
-    public static String e(String tag, String message, Throwable exception) {
+    public String e(String tag, String message, Throwable exception) {
         Log.e(tag, message, exception);
         return writeMessageToLog(tag, message + " exception: " + exception.getMessage(), LogType.ERROR);
     }
-    public static String i(String tag, String message) {
+    public String i(String tag, String message) {
         Log.i(tag, message);
         return writeMessageToLog(tag, message, LogType.INFO);
     }
-    public static String i(String tag, String message, Throwable exception) {
+    public String i(String tag, String message, Throwable exception) {
         Log.i(tag, message, exception);
         return writeMessageToLog(tag, message + " exception: " + exception.getMessage(), LogType.INFO);
     }
-    public static String v(String tag, String message) {
+    public String v(String tag, String message) {
         Log.v(tag, message);
         return writeMessageToLog(tag, message, LogType.VERBOSE);
     }
-    public static String v(String tag, String message, Throwable exception) {
+    public String v(String tag, String message, Throwable exception) {
         Log.v(tag, message, exception);
         return writeMessageToLog(tag, message + " exception: " + exception.getMessage(), LogType.VERBOSE);
     }
-    public static String w(String tag, Throwable exception) {
+    public String w(String tag, Throwable exception) {
         Log.w(tag, exception);
         return writeMessageToLog(tag, exception.getMessage(), LogType.WARN);
     }
-    public static String w(String tag, String message) {
+    public String w(String tag, String message) {
         Log.w(tag, message);
         return writeMessageToLog(tag, message, LogType.WARN);
     }
-    public static String w(String tag, String message, Throwable exception) {
+    public String w(String tag, String message, Throwable exception) {
         Log.w(tag, message, exception);
         return writeMessageToLog(tag, message + " exception: " + exception.getMessage(), LogType.WARN);
     }
-    public static String wtf(String tag, Throwable exception) {
+    public String wtf(String tag, Throwable exception) {
         Log.wtf(tag, exception);
         return writeMessageToLog(tag, exception.getMessage(), LogType.WTF);
     }
-    public static String wtf(String tag, String message) {
+    public String wtf(String tag, String message) {
         Log.wtf(tag, message);
         return writeMessageToLog(tag, message, LogType.WTF);
     }
-    public static String wtf(String tag, String message, Throwable exception) {
+    public String wtf(String tag, String message, Throwable exception) {
         Log.wtf(tag, message, exception);
         return writeMessageToLog(tag, message + " exception: " + exception.getMessage(), LogType.WTF);
     }
-    public static String data(String tag, String data) {
-        writeData(data);
-        return FileLog.i(tag, data);
+    public String data(String tag, String data) {
+        return writeData(data);
     }
 
     private static String formatLogString(String tag, String message, LogType level) {
@@ -119,33 +129,29 @@ public class FileLog {
         String fileName = traceElement.getFileName();
 
 //        String formattedString = fileName + ":" + lineNumber + " " + logTypeStrings.get(level) + "/" + tag + ":" + message;
-        String formattedString = getTimeStamp() + " "  + logTypeStrings.get(level) + "/" + tag +
+        return getTimeStamp() + " "  + logTypeStrings.get(level) + "/" + tag +
                 ":" +
                 message;
-
-        return formattedString;
     }
 
     // SETTERS
 
-    private static File setupFile(Activity activity, File dir, String fileName) throws IOException {
+    private File setupFile(Activity activity, File dir, String fileName)
+            throws IOException {
         verifyWritePermissions(activity);
 
-        String completeFileName;
         String date = getFormattedDate();
         int dotIndex = fileName.lastIndexOf(".");
 
-        if (dotIndex != -1) {
-            completeFileName = fileName.substring(0, dotIndex) + "_" + date + fileName.substring(dotIndex);
+        if (fileName.length() == 0) {
+            throw new IllegalArgumentException("Passed file name is empty and no date was " +
+                    "expected to replace it.");
         }
-        else if (fileName.length() < 1) {
-            completeFileName = date + ".txt";
-        }
-        else {
-            completeFileName = fileName + "_" + getFormattedDate() + ".txt";
+        else if (dotIndex == -1) {
+            fileName = fileName + ".txt";
         }
 
-        File completeFile = new File(dir, completeFileName);
+        File completeFile = new File(dir, fileName);
 
         completeFile.getParentFile().mkdirs();
 
@@ -156,26 +162,35 @@ public class FileLog {
         return completeFile;
     }
 
-    public static void setDataFile(Activity activity, File dir, String fileName) throws IOException {
-        dataFile = setupFile(activity, dir, fileName);
+    public void setDataFile(Activity activity, File dir, String fileName) throws IOException {
+        this.dataFile = setupFile(activity, dir, fileName);
     }
 
-    public static void setLogFile(Activity activity, File dir, String fileName) throws IOException {
-        logFile = setupFile(activity, dir, fileName);
+    public void setDataFile(Activity activity, String appName, String fileName) throws IOException {
+        setDataFile(activity, getParentDir(appName), fileName);
+    }
+
+    public void setLogFile(Activity activity, File dir, String fileName) throws IOException {
+        this.logFile = setupFile(activity, dir, fileName);
+    }
+
+    public void setLogFile(Activity activity, String appName, String fileName) throws IOException {
+        setLogFile(activity, getParentDir(appName), fileName);
     }
 
     public static File getDownloadsFolder() {
         return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
     }
 
-    public static void setDefaultFiles(Activity activity, String appName) throws IOException {
-        final File parentDir = new File(getDownloadsFolder(), appName);
+    private static File getParentDir(String appName) {
+        return new File(getDownloadsFolder(), appName + File.separator + getFormattedDate());
+    }
 
-        File logDir = new File(parentDir, "logs");
-        File dataDir = new File(parentDir, "data");
+    public void setDefaultFiles(Activity activity, String appName) throws IOException {
+        final File parentDir = getParentDir(appName);
 
-        logFile = setupFile(activity, logDir, "log");
-        dataFile = setupFile(activity, dataDir, "data");
+        this.logFile = setupFile(activity, parentDir, "log");
+        this.dataFile = setupFile(activity, parentDir, "data");
     }
 
     public static String getTimeStamp() {
@@ -186,17 +201,17 @@ public class FileLog {
         return new SimpleDateFormat("yyyy_MM_dd").format(new Date());
     }
 
-    private static String writeMessageToLog(String tag, String message, LogType level) {
+    private String writeMessageToLog(String tag, String message, LogType level) {
         String formattedText = formatLogString(tag, message, level);
-        write(logFile, formattedText);
+        write(this.logFile, formattedText);
         return formattedText;
     }
 
-    private static void writeData(String data) {
-        write(dataFile, data);
+    private String writeData(String data) {
+        return write(this.dataFile, data);
     }
 
-    private static void write(File file, String text) {
+    private static String write(File file, String text) {
         try
         {
             //BufferedWriter for performance, true to set append to file flag
@@ -204,32 +219,38 @@ public class FileLog {
             buf.append(text);
             buf.newLine();
             buf.close();
+            return text;
         }
         catch (IOException e)
         {
             Log.e(LOG_TAG, "Error writing to file: " + e.getMessage());
+            return "";
         }
     }
-    public static void saveFile(Context context) {
+
+    public static void addFileToDownloads(File addFile, Context context) {
         //https://stackoverflow.com/a/46657146/5500690
         DownloadManager downloadManager = (DownloadManager) context.getSystemService(DOWNLOAD_SERVICE);
 
-        downloadManager.addCompletedDownload(logFile.getParentFile().getName(), logFile
-                .getParentFile().getName(), true, "text/plain",logFile.getAbsolutePath(),logFile
+        downloadManager.addCompletedDownload(addFile.getParentFile().getName(), addFile
+                .getParentFile().getName(), true, "text/plain",addFile.getAbsolutePath(),addFile
                 .length(),false);
-        downloadManager.addCompletedDownload(dataFile.getParentFile().getName(), dataFile
-                .getParentFile().getName(), true, "text/plain",dataFile.getAbsolutePath(),
-                dataFile.length(),false);
 
         // I think this has to be done twice so that the media manager will actually pick it up
-        downloadManager.addCompletedDownload(logFile.getName(), logFile.getName(), true,
-                "text/plain",logFile.getAbsolutePath(),logFile.length(),false);
-        downloadManager.addCompletedDownload(dataFile.getName(), dataFile.getName(), true,
-                "text/plain",logFile.getAbsolutePath(),logFile.length(),false);
+        downloadManager.addCompletedDownload(addFile.getName(), addFile.getName(), true,
+                "text/plain",addFile.getAbsolutePath(),addFile.length(),false);
     }
 
+    public void saveFiles(Context context) {
+        if (logFile != null) {
+            addFileToDownloads(logFile, context);
+        }
+        if (dataFile != null) {
+            addFileToDownloads(dataFile, context);
+        }
+    }
 
-    public static void verifyWritePermissions(Activity activity) {
+    public void verifyWritePermissions(Activity activity) {
         final int REQUEST_EXTERNAL_STORAGE = 1;
         final String[] PERMISSIONS_STORAGE = {
                 Manifest.permission.READ_EXTERNAL_STORAGE,

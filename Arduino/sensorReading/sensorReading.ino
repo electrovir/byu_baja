@@ -18,7 +18,7 @@
 #define ZERO_SPEED_TIMEOUT 1000000
 #define WHEEL_DIAMETER_INCHES 21.0
 // this is the maximum period of bluetooth transmission in milliseconds
-#define MIN_PRINT_DELAY 25
+#define MIN_PRINT_DELAY 25 // 25 => 40 Hz
 #define MIN_SAMPLE_DELAY 5
 
 enum spinState {TRIGGER, ON, OFF};
@@ -226,14 +226,14 @@ String getValues(int counter) {
   unsigned long difference = newTime - lastValuesTime;
   lastValuesTime = newTime;
   
-//  return String(counter) + "," + String(difference) + "," + String(500+printCounter*3) + "," + String(printCounter/30) + "," + String(99-printCounter/20) + "," + String(99-printCounter/30);
-  return String(counter) + "," + String(difference) + "," + String(finalRpm) + "," + String(finalSpeed) + "," + String(shockLeft) + "," + String(shockRight));
+  return String(counter) + "," + String(difference) + "," + String(500+printCounter*3) + "," + String(printCounter/30) + "," + String(99-printCounter/20) + "," + String(99-printCounter/30);
+//  return String(counter) + "," + String(difference) + "," + String(finalRpm) + "," + String(finalSpeed) + "," + String(shockLeft) + "," + String(shockRight);
 }
 
 void printValues() {
 
   if (millis() - lastTimeSample > MIN_SAMPLE_DELAY) {
-    sendString += getValues() + ";";
+    sendString += getValues(printCounter) + ";";
     
     printCounter++;
     if (printCounter > 999) {

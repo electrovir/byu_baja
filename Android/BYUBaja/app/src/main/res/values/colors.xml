@@ -10,7 +10,14 @@
     <color name="colorBackgroundTransparent">#0000122b</color>
     <color name="colorFuel">#00aa00</color>
 
+    <color name="colorPrimaryRed">#ff002d</color>
+    <color name="color_button_text">#ffffff</color>
+    <color name="color_button_text_disabled">#000000</color>
 
-    <color name="bluetoothConnected">#096CFF</color>
-    <color name="bluetoothDisconnected">#ff002d</color>
+    <color name="colorStopButton">@color/colorPrimaryRed</color>
+    <color name="colorStartButton">@color/colorPrimary</color>
+
+
+    <color name="colorBluetoothConnected">#096CFF</color>
+    <color name="colorBluetoothDisconnected">@color/colorPrimaryRed</color>
 </resources>
