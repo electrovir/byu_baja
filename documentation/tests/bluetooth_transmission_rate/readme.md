@@ -2,9 +2,7 @@
 
 ## UPDATE
 
-This test result is pretty much useless in practice as every little change affects it dramatically. However, I still a utilize similar testing procedures to tweak my transmission rates after each change.
-
-I've discovered that if I only send data in big chunks that the data sampling speed can then be increased. At the moment of writing this, for example, data is saved into a long string about every ``5 ms`` and then at about every ``25 ms`` the data is transmitted.
+This test result is pretty much useless in practice as every little change affects it dramatically. However, I still utilize similar testing procedures to tweak my transmission rates after each change.
 
 ## Materials
 
@@ -25,13 +23,13 @@ I've discovered that if I only send data in big chunks that the data sampling sp
 
 ### Good Output
 
-![](bluetoothTransmissionRate_good.png)
+![](bluetooth_transmission_rate_good.png)
 
 Note that more data may be added later such that each long has more information.
 
 ### Bad Output
 
-![](bluetoothTransmissionRate_bad.png)
+![](bluetooth_transmission_rate_bad.png)
 
 ## Results
 
@@ -40,3 +38,7 @@ I discovered that a period of ``12 ms`` resulted in a output that is very stable
 There isn't really a target value for this frequency. I want it to be higher than ``60 Hz`` so that transitions will look smooth on the HUD, but it doesn't matter that much. Honestly, as long as the frequency is higher than ``10 Hz`` it'll be fine. Therefore, there's no point in pushing the frequency so far that the data starts getting garbled.
 
 **Increasing the amount of data being sent from the Arduino in each line may alter these results.**
+
+### Results 2
+
+I've discovered that if I only send data in big chunks that the data sampling speed can then be increased. At the moment of writing this, for example, data is saved into a long string about every ``5 ms`` and then at about every ``25 ms`` the data is transmitted.
