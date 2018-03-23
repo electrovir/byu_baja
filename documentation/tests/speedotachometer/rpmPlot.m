@@ -7,6 +7,12 @@ x = 1:rpmCount;
 
 figure(1);
 clf;
-plot(x,rpmValues);
+plot(x,rpmValues, 'displayname', 'Noisy Signal');
 hold on;
-plot(x, rpmValues2(1:rpmCount), 'LineWidth', 4);
+plot(x, rpmValues2(1:rpmCount), 'LineWidth', 4, 'displayname', 'Reduced Noise');
+
+legend('show', 'location', 'best');
+ylabel('RPM');
+xlabel('Sample Number');
+title('Tachometer Readings');
+set(gca, 'fontsize', 14);
