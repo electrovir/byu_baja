@@ -4,4 +4,5 @@
     <string name="speedLabel">mph</string>
     <string name="miniRunStart">START</string>
     <string name="miniRunStop">STOP</string>
+    <string name="mini_run_label">Run Counter</string>
 </resources>

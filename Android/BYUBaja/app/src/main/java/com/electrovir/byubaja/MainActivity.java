@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
 import java.io.IOException;
 
 import com.electrovir.byubaja.util.FileLog;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements
     View mBluetoothIndicator;
     Button mMiniRunStart;
     Button mMiniRunStop;
+    TextView mMiniRunCounterView;
     boolean bluetoothDeviceConnected = false;
     private static final String TAG_BLUETOOTH_FRAGMENT = "bluetoothFragment";
     private static final String TAG_ACCELEROMETER_FRAGMENT = "accelerometerFragment";
@@ -50,53 +53,47 @@ public class MainActivity extends AppCompatActivity implements
     private boolean miniRunStarted = false;
 
     public void handleBluetoothInput(String input) {
-        final boolean testing = false;
-        if (testing) {
-            System.out.println(input);
-        }
-        else {
-            if (input != null) {
-                // 0: count
-                // 1: ms
-                // 2: rpm
-                // 3: mph
-                // 4: percent
-                // 5: percent
-                String[] lines = input.trim().split(LINE_BREAK_CHARACTER);
+        if (input != null) {
+            // 0: count
+            // 1: ms
+            // 2: rpm
+            // 3: mph
+            // 4: percent
+            // 5: percent
+            String[] lines = input.trim().split(LINE_BREAK_CHARACTER);
 
-                if (lines.length < 2) {
-                    mainLogger.e(TAG, "Garbled data:" + input);
-                    return;
-                }
-
-                String[] data = lines[0].trim().split(DATA_BREAK_CHARACTER);
-
-                if (data.length < 6) {
-                    mainLogger.e(TAG, "Garbled data:" + input);
-                    return;
-                }
-
-                String dataLogString =  input.trim().replace(LINE_BREAK_CHARACTER, " " +
-                        bluetoothDeviceConnected + " " + FileLog.getTimeStamp() + "\n").trim();
-
-                // log the data
-                mainLogger.data(TAG, dataLogString);
-                // also log data to the mini run file
-                if (miniRunStarted) {
-                    miniRunLogger.data(TAG, dataLogString);
-                }
-
-                try {
-                    mRpmText.setText(data[DATA_START]);
-                    mTachDial.setProgress(Integer.valueOf(data[DATA_START]) * MAX_TACH_PROGRESS / MAX_TACH_READING);
-                }
-                catch (NumberFormatException e) {
-                    mainLogger.e(TAG, "Invalid value for rpm:" + data[DATA_START]);
-                }
-                mMphText.setText(data[DATA_START + 1]);
-                mShockLeftProgress.setProgress(Integer.parseInt(data[DATA_START + 2]));
-                mShockRightProgress.setProgress(Integer.parseInt(data[DATA_START + 3]));
+            if (lines.length < 2) {
+                mainLogger.e(TAG, "Garbled data:" + input);
+                return;
             }
+
+            String[] data = lines[0].trim().split(DATA_BREAK_CHARACTER);
+
+            if (data.length < 6) {
+                mainLogger.e(TAG, "Garbled data:" + input);
+                return;
+            }
+
+            String dataLogString =  input.trim().replace(LINE_BREAK_CHARACTER, " " +
+                    bluetoothDeviceConnected + " " + FileLog.getTimeStamp() + "\n").trim();
+
+            // log the data
+            mainLogger.data(TAG, dataLogString);
+            // also log data to the mini run file
+            if (miniRunStarted) {
+                miniRunLogger.data(TAG, dataLogString);
+            }
+
+            try {
+                mRpmText.setText(data[DATA_START]);
+                mTachDial.setProgress(Integer.valueOf(data[DATA_START]) * MAX_TACH_PROGRESS / MAX_TACH_READING);
+            }
+            catch (NumberFormatException e) {
+                mainLogger.e(TAG, "Invalid value for rpm:" + data[DATA_START]);
+            }
+            mMphText.setText(data[DATA_START + 1]);
+            mShockLeftProgress.setProgress(Integer.parseInt(data[DATA_START + 2]));
+            mShockRightProgress.setProgress(Integer.parseInt(data[DATA_START + 3]));
         }
     }
 
@@ -154,9 +151,9 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void startMiniRun() {
+        mMiniRunCounterView.setText(Integer.toString(miniRunCount));
         try {
-            miniRunLogger.setDataFile(this, APP_NAME, "mini_run_" + Integer.toString(miniRunCount) + "" +
-                    ".txt");
+            miniRunLogger.setDataFile(this, APP_NAME, "mini_run_" + Integer.toString(miniRunCount) + ".txt");
             miniRunStarted = true;
             mMiniRunStart.setEnabled(false);
             mMiniRunStop.setEnabled(true);
@@ -172,6 +169,12 @@ public class MainActivity extends AppCompatActivity implements
         mMiniRunStop.setEnabled(false);
         miniRunLogger.saveFiles(this);
         miniRunCount++;
+
+        int fileCount = countMiniRunFiles();
+
+        if (fileCount != miniRunCount) {
+            miniRunCount = fileCount;
+        }
     }
 
     private void addAccelerometerFragment() {
@@ -184,6 +187,28 @@ public class MainActivity extends AppCompatActivity implements
             mAccelerometerFragment = AccelerometerFragment.newInstance();
             fm.beginTransaction().add(mAccelerometerFragment, TAG_ACCELEROMETER_FRAGMENT).commit();
         }
+    }
+
+    private static int countMiniRunFiles() {
+        int counter = 0;
+        boolean foundFile = true;
+
+        File[] files = FileLog.getParentDir(APP_NAME).listFiles();
+
+        while (foundFile) {
+            foundFile = false;
+            for (File listedFile : files) {
+                if (listedFile.getName().contains("mini_run_" + counter + ".txt")) {
+                    counter++;
+                    foundFile = true;
+                    break;
+                }
+            }
+        }
+
+        Log.i(TAG, "Mini run index: " + counter);
+
+        return counter;
     }
 
     @Override
@@ -199,12 +224,19 @@ public class MainActivity extends AppCompatActivity implements
         mMphText = (TextView) findViewById(R.id.speedometer);
         mTachDial = (ProgressBar) findViewById(R.id.tachometerProgress);
         mBluetoothIndicator = findViewById(R.id.bluetooth_status);
+        mMiniRunCounterView = (TextView) findViewById(R.id.mini_run_counter);
 
         mShockLeftProgress = (ProgressBar) findViewById(R.id.shock_front_left_position);
         mShockRightProgress = (ProgressBar) findViewById(R.id.shock_front_right_position);
 
         mMiniRunStart = (Button) findViewById(R.id.mini_run_start);
         mMiniRunStop = (Button) findViewById(R.id.mini_run_stop);
+
+        updateMiniRunCount();
+
+        Log.i(TAG, "Starting with mini run index: " + Integer.toString(miniRunCount));
+
+        mMiniRunCounterView.setText(Integer.toString(miniRunCount));
 
         mMiniRunStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -229,10 +261,15 @@ public class MainActivity extends AppCompatActivity implements
         addAccelerometerFragment();
     }
 
+    private void updateMiniRunCount() {
+        this.miniRunCount = countMiniRunFiles();
+    }
+
     @Override
     public void onResume() {
         super.onResume();
         hideStatusBar();
+        updateMiniRunCount();
     }
 
     @Override

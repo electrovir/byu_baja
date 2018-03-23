@@ -8,24 +8,6 @@
     android:background="@color/colorBackground"
     tools:context="com.electrovir.byubaja.MainActivity">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="@color/colorAccent"
-        android:padding="0dp"
-        android:paddingEnd="0dp"
-        android:paddingStart="0dp"
-        android:progress="50"
-        android:progressDrawable="@drawable/fuel_gauge_drawable"
-        android:progressTint="@color/colorFuel"
-        android:visibility="gone"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
     <ImageView
         android:id="@+id/bluetooth_status"
         android:layout_width="wrap_content"
@@ -44,7 +26,7 @@
         android:layout_alignTop="@+id/shock_front_left_position"
         android:max="100"
         android:min="0"
-        android:progress="3"
+        android:progress="45"
         android:progressDrawable="@drawable/shock_drawable"
         android:rotation="-90"/>
 
@@ -58,7 +40,7 @@
         android:layout_toEndOf="@+id/tachometerProgress"
         android:max="100"
         android:min="0"
-        android:progress="5"
+        android:progress="50"
         android:progressDrawable="@drawable/shock_drawable"
         android:rotation="-90"/>
 
@@ -85,7 +67,7 @@
         android:layout_marginBottom="-30dp"
         android:clickable="false"
         android:includeFontPadding="false"
-        android:text="35"
+        android:text="31"
         android:textAlignment="center"
         android:textAppearance="@android:style/TextAppearance.Theme"
         android:textSize="@dimen/speedometerTextSize"
@@ -110,7 +92,7 @@
         android:layout_above="@+id/tachometerProgress"
         android:layout_toStartOf="@+id/space2"
         android:clickable="false"
-        android:text="0"
+        android:text="3727"
         android:textAlignment="textEnd"
         android:textAppearance="@android:style/TextAppearance.Theme"
         android:textSize="@dimen/tachometerTextSize"
@@ -140,7 +122,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/progressBar"
+        android:layout_alignParentStart="true"
         android:enabled="false"
         android:text="@string/miniRunStop"
         android:textAlignment="center"
@@ -151,10 +133,38 @@
         style="@style/start_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/progressBar"
-        android:layout_toEndOf="@+id/progressBar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:text="@string/miniRunStart"
         android:textAlignment="center"
+        android:textSize="@dimen/big_button_text_size"/>
+
+    <TextView
+        android:id="@+id/mini_run_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/mini_run_stop"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="51dp"
+        android:text="3"
+        android:textSize="@dimen/big_button_text_size"/>
+
+    <TextView
+        android:id="@+id/mini_run_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mini_run_counter"
+        android:layout_alignEnd="@+id/mini_run_stop"
+        android:layout_marginEnd="13dp"
+        android:text="@string/mini_run_label"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="5:08 pm"
         android:textSize="@dimen/big_button_text_size"/>
 
 </RelativeLayout>

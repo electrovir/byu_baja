@@ -117,7 +117,6 @@ public class BluetoothConnectionFragment extends Fragment {
                             if (caller != null) {
                                 caller.handleBluetoothInput(sbprint);
                             }
-//                            Log.i(LOG_TAG, sbprint);
                         }
                         break;
                     case SOCKET_CLOSED_STATUS:
@@ -258,22 +257,21 @@ public class BluetoothConnectionFragment extends Fragment {
         public void run() {
             while(true) {
                 if (checking) {
-                    Log.i(LOG_TAG, "Continuous bluetooth checking: checking bluetooth connection.");
+//                    Log.i(LOG_TAG, "Continuous bluetooth checking: checking bluetooth connection.");
 
                     if (mBluetoothSocket == null || !mBluetoothSocket.isConnected() || !bluetoothConnected) {
                         if (mBluetoothSocket == null) {
-                            Log.i(LOG_TAG, "Continuous bluetooth checking: null bluetooth socket.");
+//                            Log.i(LOG_TAG, "Continuous bluetooth checking: null bluetooth socket.");
                         } else {
-                            Log.i(LOG_TAG, "Continuous bluetooth checking: bluetooth socket not connected.");
+//                            Log.i(LOG_TAG, "Continuous bluetooth checking: bluetooth socket not connected.");
                         }
 
-                        Log.i(LOG_TAG, "Continuous bluetooth checking: attempting to open " +
-                                        "bluetooth socket.\n");
+//                        Log.i(LOG_TAG, "Continuous bluetooth checking: attempting to open " +
+//                                        "bluetooth socket.\n");
                         establishBluetoothConnection(mBluetoothDevice, mBluetoothAdapter, bluetoothMessageHandler);
                     }
                     else {
                         try {
-                            Log.i(LOG_TAG, "Continuous bluetooth checking: sleeping");
                             Thread.sleep(BLUETOOTH_CHECK_INTERVAL);
                         } catch (InterruptedException e) {
                             Log.e(LOG_TAG, "Continuous bluetooth checking: error sleeping the thread. exiting continuous checking.");

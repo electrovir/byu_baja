@@ -60,8 +60,8 @@ public class FileLog {
         }
     }
 
-    private File logFile;
-    private File dataFile;
+    public File logFile;
+    public File dataFile;
 
     public String d(String tag, String message) {
         Log.d(tag, message);
@@ -182,7 +182,7 @@ public class FileLog {
         return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
     }
 
-    private static File getParentDir(String appName) {
+    public static File getParentDir(String appName) {
         return new File(getDownloadsFolder(), appName + File.separator + getFormattedDate());
     }
 
@@ -232,11 +232,12 @@ public class FileLog {
         //https://stackoverflow.com/a/46657146/5500690
         DownloadManager downloadManager = (DownloadManager) context.getSystemService(DOWNLOAD_SERVICE);
 
+        // add the parent folder to the downloads list
         downloadManager.addCompletedDownload(addFile.getParentFile().getName(), addFile
                 .getParentFile().getName(), true, "text/plain",addFile.getAbsolutePath(),addFile
                 .length(),false);
 
-        // I think this has to be done twice so that the media manager will actually pick it up
+        // add the new file to the downloads list
         downloadManager.addCompletedDownload(addFile.getName(), addFile.getName(), true,
                 "text/plain",addFile.getAbsolutePath(),addFile.length(),false);
     }
