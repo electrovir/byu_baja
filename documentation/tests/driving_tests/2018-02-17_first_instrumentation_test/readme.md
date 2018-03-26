@@ -59,6 +59,6 @@ It should be possible for the Android to filter the incoming speedometer data, b
   * Make attachment of protoboards to the arduino more solid.
   * Make use of RF antenna.
   * Reduce speedometer noise.
-  * Make more useful HUD on tablet.
-  * Test shocks on car to see if their true range is within the gathered data.
-  * Timestamp logged data.
+  * ~~Make more useful HUD on tablet.~~
+  * ~~Test shocks on car to see if their true range is within the gathered data.~~
+  * ~~Timestamp logged data.~~

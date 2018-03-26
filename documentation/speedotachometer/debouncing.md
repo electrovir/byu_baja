@@ -9,6 +9,7 @@ The speedometer has lots of noise.
 With a debounce timer, care must be taken to properly set the delay of the debounce timer. The following equations are the limiting factors for the timer. **See the Matlab file ``debounce_timer.m`` for explanations on the variables.**
 
 ### Minimum Magnet Length
+
 ```MATLAB
 Lm_min = 2 * Ts * Da * Vv_maxTarget / Dt;
 ```

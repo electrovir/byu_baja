@@ -110,7 +110,7 @@ This is the first time we've tested the sensors on the dyno! We hooked up both t
 Things we learned:
   * Need more permenant magnet mount to the clutch. It kept falling off.
   * Speedometer is not working properly.
-    * Mostly likely a code issue as rearranging the sensor + magnet didn't seem to help.
+    * Most likely a code issue as rearranging the sensor + magnet didn't seem to help.
   * Android app is crashing on the part that splits up the incoming text by spaces/colons. Not sure why this is happening but it's easy to fix.
   * Engine is maxing out at around 3200 rpm. At least, according to our tachometer.
   * Tachometer appears to be working **just fine**. We just need to mount the sensor and magnet better.

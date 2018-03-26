@@ -1,0 +1,953 @@
+Now sending 388771...ok...Got response 388771, round-trip delay: 23
+Now sending 389794...ok...Got response 389794, round-trip delay: 23
+Now sending 390817...ok...Got response 390817, round-trip delay: 23
+Now sending 391840...ok...Got response 391840, round-trip delay: 24
+Now sending 392864...ok...Got response 392864, round-trip delay: 23
+Now sending 393887...ok...Got response 393887, round-trip delay: 23
+Now sending 394910...ok...Got response 394910, round-trip delay: 23
+Now sending 395933...ok...Got response 395933, round-trip delay: 24
+Now sending 396957...ok...Got response 396957, round-trip delay: 23
+Now sending 397980...ok...Got response 397980, round-trip delay: 23
+Now sending 399003...ok...Got response 399003, round-trip delay: 23
+Now sending 400026...ok...Got response 400026, round-trip delay: 24
+Now sending 401050...ok...Got response 401050, round-trip delay: 23
+Now sending 402073...ok...Got response 402073, round-trip delay: 23
+Now sending 403096...ok...Got response 403096, round-trip delay: 36
+Now sending 404133...ok...Got response 404133, round-trip delay: 23
+Now sending 405156...ok...Got response 405156, round-trip delay: 23
+Now sending 406179...ok...Got response 406179, round-trip delay: 23
+Now sending 407202...ok...Got response 407202, round-trip delay: 23
+Now sending 408226...ok...Got response 408226, round-trip delay: 23
+Now sending 409249...ok...Got response 409249, round-trip delay: 23
+Now sending 410272...ok...Got response 410272, round-trip delay: 23
+Now sending 411295...ok...Got response 411295, round-trip delay: 23
+Now sending 412319...ok...Got response 412319, round-trip delay: 23
+Now sending 413342...ok...Got response 413342, round-trip delay: 23
+Now sending 414365...ok...Got response 414365, round-trip delay: 23
+Now sending 415388...ok...Got response 415388, round-trip delay: 23
+Now sending 416412...ok...Got response 416412, round-trip delay: 23
+Now sending 417435...ok...Got response 417435, round-trip delay: 23
+Now sending 418458...ok...Got response 418458, round-trip delay: 23
+Now sending 419481...ok...Got response 419481, round-trip delay: 23
+Now sending 420505...ok...Got response 420505, round-trip delay: 23
+Now sending 421528...ok...Got response 421528, round-trip delay: 23
+Now sending 422551...ok...Got response 422551, round-trip delay: 23
+Now sending 423574...ok...Got response 423574, round-trip delay: 23
+Now sending 424598...ok...Got response 424598, round-trip delay: 23
+Now sending 425621...ok...Got response 425621, round-trip delay: 23
+Now sending 426644...ok...Got response 426644, round-trip delay: 23
+Now sending 427667...ok...Got response 427667, round-trip delay: 24
+Now sending 428691...ok...Got response 428691, round-trip delay: 22
+Now sending 429714...ok...Got response 429714, round-trip delay: 22
+Now sending 430737...ok...Got response 430737, round-trip delay: 22
+Now sending 431760...ok...Got response 431760, round-trip delay: 23
+Now sending 432784...ok...Got response 432784, round-trip delay: 22
+Now sending 433807...ok...Got response 433807, round-trip delay: 22
+Now sending 434830...ok...Got response 434830, round-trip delay: 22
+Now sending 435853...ok...Got response 435853, round-trip delay: 23
+Now sending 436877...ok...Got response 436877, round-trip delay: 22
+Now sending 437900...ok...Got response 437900, round-trip delay: 22
+Now sending 438923...ok...Got response 438923, round-trip delay: 22
+Now sending 439947...ok...Got response 439947, round-trip delay: 22
+Now sending 440970...ok...Got response 440970, round-trip delay: 22
+Now sending 441993...ok...Got response 441993, round-trip delay: 22
+Now sending 443016...ok...Got response 443016, round-trip delay: 22
+Now sending 444040...ok...Got response 444040, round-trip delay: 22
+Now sending 445063...ok...Got response 445063, round-trip delay: 22
+Now sending 446086...ok...Got response 446086, round-trip delay: 22
+Now sending 447109...ok...Got response 447109, round-trip delay: 22
+Now sending 448133...ok...Got response 448133, round-trip delay: 22
+Now sending 449156...ok...Got response 449156, round-trip delay: 22
+Now sending 450179...ok...Got response 450179, round-trip delay: 22
+Now sending 451202...ok...Got response 451202, round-trip delay: 22
+Now sending 452226...ok...Got response 452226, round-trip delay: 30
+Now sending 453258...ok...Got response 453258, round-trip delay: 22
+Now sending 454281...ok...Got response 454281, round-trip delay: 22
+Now sending 455304...ok...Got response 455304, round-trip delay: 22
+Now sending 456327...ok...Got response 456327, round-trip delay: 22
+Now sending 457351...ok...Got response 457351, round-trip delay: 22
+Now sending 458374...ok...Got response 458374, round-trip delay: 22
+Now sending 459397...ok...Got response 459397, round-trip delay: 22
+Now sending 460420...ok...Got response 460420, round-trip delay: 22
+Now sending 461444...ok...Got response 461444, round-trip delay: 22
+Now sending 462467...ok...Got response 462467, round-trip delay: 22
+Now sending 463490...ok...Got response 463490, round-trip delay: 22
+Now sending 464513...ok...Got response 464513, round-trip delay: 27
+Now sending 465541...ok...Got response 465541, round-trip delay: 22
+Now sending 466564...ok...Got response 466564, round-trip delay: 22
+Now sending 467587...ok...Got response 467587, round-trip delay: 22
+Now sending 468611...ok...Got response 468611, round-trip delay: 22
+Now sending 469634...ok...Got response 469634, round-trip delay: 22
+Now sending 470657...ok...Got response 470657, round-trip delay: 22
+Now sending 471680...ok...Got response 471680, round-trip delay: 22
+Now sending 472704...ok...Got response 472704, round-trip delay: 22
+Now sending 473726...ok...Got response 473726, round-trip delay: 23
+Now sending 474749...ok...Got response 474749, round-trip delay: 23
+Now sending 475772...ok...Got response 475772, round-trip delay: 24
+Now sending 476796...ok...Got response 476796, round-trip delay: 23
+Now sending 477819...ok...Got response 477819, round-trip delay: 23
+Now sending 478842...ok...Got response 478842, round-trip delay: 23
+Now sending 479865...ok...Got response 479865, round-trip delay: 24
+Now sending 480889...ok...Got response 480889, round-trip delay: 23
+Now sending 481912...ok...Got response 481912, round-trip delay: 23
+Now sending 482935...ok...Got response 482935, round-trip delay: 23
+Now sending 483958...ok...Got response 483958, round-trip delay: 24
+Now sending 484982...ok...Got response 484982, round-trip delay: 23
+Now sending 486005...ok...Got response 486005, round-trip delay: 27
+Now sending 487033...ok...Got response 487033, round-trip delay: 23
+Now sending 488056...ok...Got response 488056, round-trip delay: 27
+Now sending 489083...ok...Got response 489083, round-trip delay: 24
+Now sending 490107...ok...Got response 490107, round-trip delay: 23
+Now sending 491130...ok...Got response 491130, round-trip delay: 23
+Now sending 492153...ok...Got response 492153, round-trip delay: 23
+Now sending 493176...ok...Got response 493176, round-trip delay: 24
+Now sending 494200...ok...Got response 494200, round-trip delay: 23
+Now sending 495223...ok...Got response 495223, round-trip delay: 23
+Now sending 496246...ok...Got response 496246, round-trip delay: 23
+Now sending 497269...ok...Got response 497269, round-trip delay: 24
+Now sending 498293...ok...Got response 498293, round-trip delay: 23
+Now sending 499316...ok...Got response 499316, round-trip delay: 32
+Now sending 500348...ok...Got response 500348, round-trip delay: 23
+Now sending 501371...ok...Got response 501371, round-trip delay: 23
+Now sending 502394...ok...Got response 502394, round-trip delay: 24
+Now sending 503418...ok...Got response 503418, round-trip delay: 23
+Now sending 504441...ok...Got response 504441, round-trip delay: 23
+Now sending 505464...ok...Got response 505464, round-trip delay: 23
+Now sending 506487...ok...Got response 506487, round-trip delay: 24
+Now sending 507511...ok...Got response 507511, round-trip delay: 23
+Now sending 508534...ok...Got response 508534, round-trip delay: 23
+Now sending 509557...ok...Got response 509557, round-trip delay: 23
+Now sending 510581...ok...Got response 510581, round-trip delay: 27
+Now sending 511608...ok...Got response 511608, round-trip delay: 23
+Now sending 512631...ok...Got response 512631, round-trip delay: 23
+Now sending 513655...ok...Got response 513655, round-trip delay: 23
+Now sending 514678...ok...Got response 514678, round-trip delay: 23
+Now sending 515701...ok...Got response 515701, round-trip delay: 23
+Now sending 516724...ok...Got response 516724, round-trip delay: 23
+Now sending 517748...ok...Got response 517748, round-trip delay: 23
+Now sending 518771...ok...Got response 518771, round-trip delay: 23
+Now sending 519794...ok...Got response 519794, round-trip delay: 23
+Now sending 520817...ok...Got response 520817, round-trip delay: 24
+Now sending 521841...ok...Got response 521841, round-trip delay: 23
+Now sending 522864...ok...Got response 522864, round-trip delay: 23
+Now sending 523887...ok...Got response 523887, round-trip delay: 23
+Now sending 524910...ok...Got response 524910, round-trip delay: 24
+Now sending 525934...ok...Got response 525934, round-trip delay: 23
+Now sending 526957...ok...Got response 526957, round-trip delay: 23
+Now sending 527980...ok...Got response 527980, round-trip delay: 23
+Now sending 529003...ok...Got response 529003, round-trip delay: 28
+Now sending 530031...ok...Got response 530031, round-trip delay: 23
+Now sending 531054...ok...Got response 531054, round-trip delay: 23
+Now sending 532078...ok...Got response 532078, round-trip delay: 23
+Now sending 533101...ok...Got response 533101, round-trip delay: 23
+Now sending 534124...ok...Got response 534124, round-trip delay: 23
+Now sending 535147...ok...Got response 535147, round-trip delay: 23
+Now sending 536171...ok...Got response 536171, round-trip delay: 23
+Now sending 537194...ok...Got response 537194, round-trip delay: 23
+Now sending 538217...ok...Got response 538217, round-trip delay: 23
+Now sending 539240...ok...Got response 539240, round-trip delay: 22
+Now sending 540264...ok...Got response 540264, round-trip delay: 22
+Now sending 541287...ok...Got response 541287, round-trip delay: 27
+Now sending 542314...ok...Got response 542314, round-trip delay: 24
+Now sending 543338...ok...Got response 543338, round-trip delay: 23
+Now sending 544361...ok...Got response 544361, round-trip delay: 23
+Now sending 545384...ok...Got response 545384, round-trip delay: 22
+Now sending 546408...ok...Got response 546408, round-trip delay: 22
+Now sending 547431...ok...Got response 547431, round-trip delay: 22
+Now sending 548454...ok...Got response 548454, round-trip delay: 22
+Now sending 549477...ok...Got response 549477, round-trip delay: 22
+Now sending 550501...ok...Got response 550501, round-trip delay: 22
+Now sending 551524...ok...Got response 551524, round-trip delay: 22
+Now sending 552547...ok...Got response 552547, round-trip delay: 22
+Now sending 553570...ok...Got response 553570, round-trip delay: 22
+Now sending 554594...ok...Got response 554594, round-trip delay: 22
+Now sending 555617...ok...Got response 555617, round-trip delay: 22
+Now sending 556640...ok...Got response 556640, round-trip delay: 22
+Now sending 557663...ok...Got response 557663, round-trip delay: 27
+Now sending 558691...failed.
+Got response 558691, round-trip delay: 76
+Now sending 559768...ok...Got response 559768, round-trip delay: 23
+Now sending 560791...ok...Got response 560791, round-trip delay: 23
+Now sending 561814...failed.
+Got response 561814, round-trip delay: 76
+Now sending 562891...ok...Got response 562891, round-trip delay: 23
+Now sending 563914...ok...Got response 563914, round-trip delay: 32
+Now sending 564946...ok...Got response 564946, round-trip delay: 27
+Now sending 565974...failed.
+Got response 565974, round-trip delay: 76
+Now sending 567051...failed.
+Got response 567051, round-trip delay: 76
+Now sending 568128...ok...Got response 568128, round-trip delay: 23
+Now sending 569151...failed.
+Got response 569151, round-trip delay: 76
+Now sending 570227...failed.
+Got response 570227, round-trip delay: 77
+Now sending 571304...failed.
+Got response 571304, round-trip delay: 81
+Now sending 572386...failed.
+Got response 572386, round-trip delay: 76
+Now sending 573462...failed.
+Got response 573462, round-trip delay: 86
+Now sending 574548...failed.
+Failed, response timed out.
+Now sending 575820...failed.
+Got response 575820, round-trip delay: 81
+Now sending 576902...failed.
+Failed, response timed out.
+Now sending 578174...failed.
+Got response 578174, round-trip delay: 86
+Now sending 579261...failed.
+Got response 579261, round-trip delay: 76
+Now sending 580337...failed.
+Failed, response timed out.
+Now sending 581610...failed.
+Failed, response timed out.
+Now sending 582884...failed.
+Failed, response timed out.
+Now sending 584158...failed.
+Got response 584158, round-trip delay: 90
+Now sending 585248...failed.
+Got response 585248, round-trip delay: 81
+Now sending 586330...failed.
+Got response 586330, round-trip delay: 75
+Now sending 587407...failed.
+Got response 587407, round-trip delay: 76
+Now sending 588483...failed.
+Got response 588483, round-trip delay: 77
+Now sending 589560...failed.
+Got response 589560, round-trip delay: 89
+Now sending 590650...failed.
+Got response 590650, round-trip delay: 77
+Now sending 591727...failed.
+Got response 591727, round-trip delay: 76
+Now sending 592803...failed.
+Got response 592803, round-trip delay: 81
+Now sending 593885...failed.
+Got response 593885, round-trip delay: 98
+Now sending 594984...failed.
+Got response 594984, round-trip delay: 90
+Now sending 596074...failed.
+Failed, response timed out.
+Now sending 597348...failed.
+Got response 597348, round-trip delay: 77
+Now sending 598425...failed.
+Got response 598425, round-trip delay: 85
+Now sending 599511...failed.
+Got response 599511, round-trip delay: 85
+Now sending 600597...failed.
+Got response 600597, round-trip delay: 76
+Now sending 601673...failed.
+Got response 601673, round-trip delay: 77
+Now sending 602750...failed.
+Failed, response timed out.
+Now sending 604022...failed.
+Failed, response timed out.
+Now sending 605295...failed.
+Failed, response timed out.
+Now sending 606568...failed.
+Failed, response timed out.
+Now sending 607842...failed.
+Failed, response timed out.
+Now sending 609116...failed.
+Failed, response timed out.
+Now sending 610388...failed.
+Failed, response timed out.
+Now sending 611661...failed.
+Failed, response timed out.
+Now sending 612934...failed.
+Failed, response timed out.
+Now sending 614207...failed.
+Failed, response timed out.
+Now sending 615481...failed.
+Failed, response timed out.
+Now sending 616755...failed.
+Failed, response timed out.
+Now sending 618028...failed.
+Failed, response timed out.
+Now sending 619300...failed.
+Failed, response timed out.
+Now sending 620573...failed.
+Failed, response timed out.
+Now sending 621846...failed.
+Failed, response timed out.
+Now sending 623120...failed.
+Failed, response timed out.
+Now sending 624394...failed.
+Failed, response timed out.
+Now sending 625667...failed.
+Failed, response timed out.
+Now sending 626939...failed.
+Failed, response timed out.
+Now sending 628212...failed.
+Failed, response timed out.
+Now sending 629485...failed.
+Failed, response timed out.
+Now sending 630759...failed.
+Failed, response timed out.
+Now sending 632033...failed.
+Failed, response timed out.
+Now sending 633306...failed.
+Failed, response timed out.
+Now sending 634578...failed.
+Failed, response timed out.
+**************MARKER**************
+Now sending 635852...failed.
+Failed, response timed out.
+
+marker value: Clyde 4th floor
+
+
+Now sending 637126...failed.
+Failed, response timed out.
+Now sending 638399...failed.
+Failed, response timed out.
+Now sending 639673...failed.
+Failed, response timed out.
+Now sending 640947...failed.
+Failed, response timed out.
+Now sending 642220...failed.
+Failed, response timed out.
+Now sending 643492...failed.
+Failed, response timed out.
+Now sending 644765...failed.
+Failed, response timed out.
+Now sending 646038...failed.
+Failed, response timed out.
+Now sending 647312...failed.
+Failed, response timed out.
+Now sending 648586...failed.
+Failed, response timed out.
+Now sending 649859...failed.
+Failed, response timed out.
+Now sending 651131...failed.
+Failed, response timed out.
+Now sending 652404...failed.
+Got response 652404, round-trip delay: 77
+Now sending 653481...failed.
+Failed, response timed out.
+Now sending 654754...failed.
+Failed, response timed out.
+Now sending 656027...failed.
+Failed, response timed out.
+Now sending 657300...failed.
+Failed, response timed out.
+Now sending 658574...failed.
+Failed, response timed out.
+Now sending 659848...failed.
+Failed, response timed out.
+Now sending 661121...failed.
+Failed, response timed out.
+Now sending 662393...failed.
+Failed, response timed out.
+Now sending 663666...failed.
+Failed, response timed out.
+Now sending 664939...failed.
+Got response 664939, round-trip delay: 81
+Now sending 666020...failed.
+Got response 666020, round-trip delay: 81
+Now sending 667102...failed.
+Failed, response timed out.
+Now sending 668375...failed.
+Got response 668375, round-trip delay: 94
+Now sending 669469...failed.
+Got response 669469, round-trip delay: 113
+Now sending 670582...failed.
+Failed, response timed out.
+Now sending 671855...failed.
+Got response 671855, round-trip delay: 86
+Now sending 672942...failed.
+Failed, response timed out.
+Now sending 674214...failed.
+Failed, response timed out.
+Now sending 675487...failed.
+Failed, response timed out.
+Now sending 676760...failed.
+Failed, response timed out.
+Now sending 678034...failed.
+Got response 678034, round-trip delay: 77
+Now sending 679111...failed.
+Got response 679111, round-trip delay: 76
+Now sending 680188...failed.
+Got response 680188, round-trip delay: 76
+Now sending 681265...failed.
+Got response 681265, round-trip delay: 81
+Now sending 682346...failed.
+Got response 682346, round-trip delay: 76
+Now sending 683423...failed.
+Failed, response timed out.
+Now sending 684695...failed.
+Got response 684695, round-trip delay: 81
+Now sending 685776...failed.
+Got response 685776, round-trip delay: 77
+Now sending 686854...failed.
+Got response 686854, round-trip delay: 81
+Now sending 687935...failed.
+Got response 687935, round-trip delay: 81
+Now sending 689016...failed.
+Got response 689016, round-trip delay: 76
+Now sending 690093...failed.
+Failed, response timed out.
+Now sending 691365...failed.
+Got response 691365, round-trip delay: 77
+Now sending 692443...failed.
+Got response 692443, round-trip delay: 75
+Now sending 693520...failed.
+Got response 693520, round-trip delay: 76
+Now sending 694596...failed.
+Got response 694596, round-trip delay: 76
+Now sending 695673...failed.
+Got response 695673, round-trip delay: 85
+Now sending 696759...failed.
+Got response 696759, round-trip delay: 89
+Now sending 697849...failed.
+Failed, response timed out.
+Now sending 699121...failed.
+Got response 699121, round-trip delay: 77
+Now sending 700198...failed.
+Got response 700198, round-trip delay: 76
+Now sending 701276...failed.
+Got response 701276, round-trip delay: 75
+Now sending 702352...ok...Got response 702352, round-trip delay: 22
+Now sending 703375...failed.
+Got response 703375, round-trip delay: 77
+Now sending 704452...ok...Got response 704452, round-trip delay: 23
+Now sending 705475...ok...Got response 705475, round-trip delay: 23
+Now sending 706498...ok...Got response 706498, round-trip delay: 24
+Now sending 707522...failed.
+Got response 707522, round-trip delay: 76
+Now sending 708598...failed.
+Got response 708598, round-trip delay: 77
+Now sending 709676...ok...Got response 709676, round-trip delay: 22
+Now sending 710699...failed.
+Got response 710699, round-trip delay: 80
+Now sending 711780...ok...Got response 711780, round-trip delay: 22
+Now sending 712803...ok...Got response 712803, round-trip delay: 22
+Now sending 713827...ok...Got response 713827, round-trip delay: 26
+Now sending 714854...failed.
+Got response 714854, round-trip delay: 81
+Now sending 715935...failed.
+Got response 715935, round-trip delay: 76
+Now sending 717012...failed.
+Got response 717012, round-trip delay: 85
+Now sending 718098...failed.
+Got response 718098, round-trip delay: 76
+Now sending 719174...failed.
+Got response 719174, round-trip delay: 77
+Now sending 720251...failed.
+Got response 720251, round-trip delay: 76
+Now sending 721329...failed.
+Failed, response timed out.
+Now sending 722600...ok...Got response 722600, round-trip delay: 59
+**************MARKER**************
+Now sending 723660...failed.
+Got response 723660, round-trip delay: 81
+
+marker value: outisde window
+
+
+Now sending 724742...ok...Got response 724742, round-trip delay: 22
+Now sending 725766...ok...Got response 725766, round-trip delay: 22
+Now sending 726789...failed.
+Got response 726789, round-trip delay: 75
+Now sending 727865...ok...Got response 727865, round-trip delay: 22
+Now sending 728889...ok...Got response 728889, round-trip delay: 57
+Now sending 729948...ok...Got response 729948, round-trip delay: 22
+Now sending 730971...ok...Got response 730971, round-trip delay: 22
+Now sending 731994...ok...Got response 731994, round-trip delay: 22
+Now sending 733017...ok...Got response 733017, round-trip delay: 27
+Now sending 734045...ok...Got response 734045, round-trip delay: 27
+Now sending 735073...failed.
+Got response 735073, round-trip delay: 89
+Now sending 736162...ok...Got response 736162, round-trip delay: 28
+Now sending 737190...ok...Got response 737190, round-trip delay: 23
+Now sending 738213...ok...Got response 738213, round-trip delay: 23
+Now sending 739236...ok...Got response 739236, round-trip delay: 24
+Now sending 740260...ok...Got response 740260, round-trip delay: 23
+Now sending 741283...ok...Got response 741283, round-trip delay: 23
+Now sending 742306...ok...Got response 742306, round-trip delay: 72
+Now sending 743378...ok...Got response 743378, round-trip delay: 24
+Now sending 744402...ok...Got response 744402, round-trip delay: 23
+Now sending 745425...ok...Got response 745425, round-trip delay: 23
+Now sending 746448...ok...Got response 746448, round-trip delay: 23
+Now sending 747471...ok...Got response 747471, round-trip delay: 24
+Now sending 748495...failed.
+Got response 748495, round-trip delay: 76
+Now sending 749572...ok...Got response 749572, round-trip delay: 22
+Now sending 750596...ok...Got response 750596, round-trip delay: 30
+Now sending 751627...failed.
+Got response 751627, round-trip delay: 77
+Now sending 752704...ok...Got response 752704, round-trip delay: 23
+Now sending 753727...ok...Got response 753727, round-trip delay: 23
+Now sending 754751...ok...Got response 754751, round-trip delay: 23
+Now sending 755774...failed.
+Got response 755774, round-trip delay: 76
+Now sending 756850...failed.
+Got response 756850, round-trip delay: 90
+Now sending 757941...failed.
+Got response 757941, round-trip delay: 76
+Now sending 759018...ok...Got response 759018, round-trip delay: 27
+Now sending 760045...failed.
+Got response 760045, round-trip delay: 76
+Now sending 761122...ok...Got response 761122, round-trip delay: 23
+Now sending 762145...ok...Got response 762145, round-trip delay: 49
+Now sending 763195...failed.
+Got response 763195, round-trip delay: 77
+Now sending 764272...failed.
+Got response 764272, round-trip delay: 81
+Now sending 765353...ok...Got response 765353, round-trip delay: 23
+Now sending 766376...failed.
+Got response 766376, round-trip delay: 76
+Now sending 767454...failed.
+Got response 767454, round-trip delay: 75
+Now sending 768530...ok...Got response 768530, round-trip delay: 41
+Now sending 769571...ok...Got response 769571, round-trip delay: 36
+Now sending 770608...ok...Got response 770608, round-trip delay: 22
+Now sending 771631...failed.
+Got response 771631, round-trip delay: 76
+Now sending 772708...failed.
+Got response 772708, round-trip delay: 76
+Now sending 773785...failed.
+Got response 773785, round-trip delay: 76
+Now sending 774861...failed.
+Failed, response timed out.
+Now sending 776134...failed.
+Got response 776134, round-trip delay: 77
+Now sending 777211...failed.
+Got response 777211, round-trip delay: 85
+Now sending 778297...failed.
+Got response 778297, round-trip delay: 90
+Now sending 779387...failed.
+Got response 779387, round-trip delay: 76
+Now sending 780464...failed.
+Got response 780464, round-trip delay: 76
+Now sending 781541...failed.
+Got response 781541, round-trip delay: 81
+Now sending 782622...failed.
+Got response 782622, round-trip delay: 81
+Now sending 783704...failed.
+Got response 783704, round-trip delay: 75
+Now sending 784780...failed.
+Failed, response timed out.
+Now sending 786053...failed.
+Failed, response timed out.
+Now sending 787325...failed.
+Got response 787325, round-trip delay: 100
+Now sending 788425...failed.
+Failed, response timed out.
+Now sending 789698...failed.
+Failed, response timed out.
+Now sending 790972...failed.
+Got response 790972, round-trip delay: 77
+Now sending 792049...failed.
+Failed, response timed out.
+Now sending 793322...failed.
+Failed, response timed out.
+Now sending 794596...failed.
+Failed, response timed out.
+Now sending 795870...failed.
+Failed, response timed out.
+Now sending 797143...failed.
+Failed, response timed out.
+Now sending 798415...failed.
+Failed, response timed out.
+Now sending 799688...failed.
+Failed, response timed out.
+Now sending 800961...failed.
+Failed, response timed out.
+Now sending 802235...failed.
+Failed, response timed out.
+Now sending 803509...failed.
+Failed, response timed out.
+Now sending 804782...failed.
+Failed, response timed out.
+Now sending 806054...failed.
+Failed, response timed out.
+Now sending 807327...failed.
+Failed, response timed out.
+Now sending 808600...failed.
+Got response 808600, round-trip delay: 81
+Now sending 809681...failed.
+Failed, response timed out.
+Now sending 810954...failed.
+Failed, response timed out.
+Now sending 812227...failed.
+Failed, response timed out.
+Now sending 813501...failed.
+Failed, response timed out.
+Now sending 814775...failed.
+Failed, response timed out.
+Now sending 816049...failed.
+Got response 816049, round-trip delay: 81
+Now sending 817130...failed.
+Got response 817130, round-trip delay: 77
+Now sending 818207...failed.
+Failed, response timed out.
+Now sending 819480...failed.
+Got response 819480, round-trip delay: 77
+Now sending 820557...failed.
+Failed, response timed out.
+Now sending 821830...failed.
+Failed, response timed out.
+Now sending 823103...failed.
+Failed, response timed out.
+Now sending 824377...failed.
+Got response 824377, round-trip delay: 77
+Now sending 825454...failed.
+Got response 825454, round-trip delay: 76
+Now sending 826531...failed.
+Got response 826531, round-trip delay: 121
+Now sending 827653...failed.
+Failed, response timed out.
+Now sending 828925...failed.
+Failed, response timed out.
+Now sending 830198...failed.
+Failed, response timed out.
+Now sending 831471...failed.
+Failed, response timed out.
+Now sending 832744...failed.
+Failed, response timed out.
+Now sending 834018...failed.
+Failed, response timed out.
+Now sending 835292...failed.
+Failed, response timed out.
+Now sending 836564...failed.
+Failed, response timed out.
+Now sending 837837...failed.
+Failed, response timed out.
+Now sending 839110...failed.
+Failed, response timed out.
+Now sending 840383...failed.
+Failed, response timed out.
+Now sending 841657...failed.
+Failed, response timed out.
+Now sending 842931...failed.
+Failed, response timed out.
+Now sending 844204...failed.
+Failed, response timed out.
+Now sending 845476...failed.
+Failed, response timed out.
+Now sending 846749...failed.
+Failed, response timed out.
+Now sending 848022...failed.
+Failed, response timed out.
+Now sending 849296...failed.
+Failed, response timed out.
+Now sending 850570...failed.
+Failed, response timed out.
+Now sending 851843...failed.
+Failed, response timed out.
+Now sending 853115...failed.
+Failed, response timed out.
+Now sending 854388...failed.
+Failed, response timed out.
+Now sending 855661...failed.
+Failed, response timed out.
+Now sending 856935...failed.
+Failed, response timed out.
+**************MARKER**************
+Now sending 858210...failed.
+Failed, response timed out.
+
+marker value: next to Eyring
+
+
+Now sending 859485...failed.
+Failed, response timed out.
+Now sending 860758...failed.
+Failed, response timed out.
+Now sending 862030...failed.
+Failed, response timed out.
+Now sending 863303...failed.
+Failed, response timed out.
+Now sending 864576...failed.
+Failed, response timed out.
+Now sending 865850...failed.
+Failed, response timed out.
+Now sending 867124...failed.
+Failed, response timed out.
+Now sending 868397...failed.
+Failed, response timed out.
+Now sending 869669...failed.
+Failed, response timed out.
+Now sending 870942...failed.
+Failed, response timed out.
+Now sending 872215...failed.
+Failed, response timed out.
+Now sending 873489...failed.
+Failed, response timed out.
+Now sending 874763...failed.
+Failed, response timed out.
+Now sending 876036...failed.
+Failed, response timed out.
+Now sending 877308...failed.
+Failed, response timed out.
+Now sending 878581...failed.
+Failed, response timed out.
+Now sending 879854...failed.
+Failed, response timed out.
+Now sending 881127...failed.
+Failed, response timed out.
+Now sending 882401...failed.
+Failed, response timed out.
+Now sending 883674...failed.
+Failed, response timed out.
+Now sending 884946...failed.
+Failed, response timed out.
+Now sending 886219...failed.
+Failed, response timed out.
+Now sending 887492...failed.
+Failed, response timed out.
+Now sending 888765...failed.
+Failed, response timed out.
+Now sending 890039...failed.
+Failed, response timed out.
+Now sending 891313...failed.
+Failed, response timed out.
+Now sending 892585...failed.
+Failed, response timed out.
+Now sending 893858...failed.
+Failed, response timed out.
+Now sending 895131...failed.
+Failed, response timed out.
+Now sending 896404...failed.
+Failed, response timed out.
+Now sending 897678...failed.
+Failed, response timed out.
+Now sending 898952...failed.
+Failed, response timed out.
+Now sending 900225...failed.
+Failed, response timed out.
+Now sending 901497...failed.
+Failed, response timed out.
+Now sending 902770...failed.
+Failed, response timed out.
+Now sending 904043...failed.
+Failed, response timed out.
+Now sending 905317...failed.
+Failed, response timed out.
+Now sending 906591...failed.
+Failed, response timed out.
+Now sending 907864...failed.
+Failed, response timed out.
+Now sending 909136...failed.
+Failed, response timed out.
+Now sending 910409...failed.
+Failed, response timed out.
+Now sending 911682...failed.
+Failed, response timed out.
+Now sending 912956...failed.
+Failed, response timed out.
+Now sending 914230...failed.
+Failed, response timed out.
+Now sending 915503...failed.
+Failed, response timed out.
+Now sending 916775...failed.
+Failed, response timed out.
+Now sending 918048...failed.
+Failed, response timed out.
+Now sending 919321...failed.
+Failed, response timed out.
+Now sending 920594...failed.
+Failed, response timed out.
+Now sending 921868...failed.
+Got response 921868, round-trip delay: 86
+Now sending 922954...failed.
+Failed, response timed out.
+Now sending 924227...failed.
+Failed, response timed out.
+Now sending 925501...failed.
+Got response 925501, round-trip delay: 77
+Now sending 926578...failed.
+Failed, response timed out.
+Now sending 927851...failed.
+Got response 927851, round-trip delay: 81
+Now sending 928932...failed.
+Got response 928932, round-trip delay: 90
+Now sending 930023...failed.
+Got response 930023, round-trip delay: 81
+Now sending 931104...failed.
+Failed, response timed out.
+Now sending 932377...failed.
+Got response 932377, round-trip delay: 77
+Now sending 933454...failed.
+Failed, response timed out.
+Now sending 934727...failed.
+Failed, response timed out.
+Now sending 936000...failed.
+Got response 936000, round-trip delay: 77
+Now sending 937077...failed.
+Got response 937077, round-trip delay: 89
+Now sending 938168...failed.
+Got response 938168, round-trip delay: 76
+Now sending 939244...failed.
+Got response 939244, round-trip delay: 77
+Now sending 940321...failed.
+Failed, response timed out.
+Now sending 941594...failed.
+Failed, response timed out.
+Now sending 942867...failed.
+Got response 942867, round-trip delay: 77
+Now sending 943944...failed.
+Got response 943944, round-trip delay: 76
+Now sending 945021...failed.
+Got response 945021, round-trip delay: 76
+Now sending 946098...failed.
+Got response 946098, round-trip delay: 75
+Now sending 947175...failed.
+Got response 947175, round-trip delay: 76
+Now sending 948251...failed.
+Got response 948251, round-trip delay: 77
+Now sending 949328...failed.
+Got response 949328, round-trip delay: 85
+Now sending 950414...failed.
+Got response 950414, round-trip delay: 76
+Now sending 951491...failed.
+Got response 951491, round-trip delay: 76
+Now sending 952567...failed.
+Got response 952567, round-trip delay: 77
+Now sending 953645...failed.
+Failed, response timed out.
+Now sending 954917...failed.
+Got response 954917, round-trip delay: 81
+Now sending 955999...failed.
+Got response 955999, round-trip delay: 77
+Now sending 957076...failed.
+Got response 957076, round-trip delay: 76
+Now sending 958152...failed.
+Got response 958152, round-trip delay: 77
+**************MARKER**************
+Now sending 959229...failed.
+Got response 959229, round-trip delay: 77
+
+marker value: on the way back
+
+
+Now sending 960307...failed.
+Got response 960307, round-trip delay: 77
+Now sending 961384...failed.
+Got response 961384, round-trip delay: 76
+Now sending 962460...failed.
+Failed, response timed out.
+Now sending 963733...failed.
+Failed, response timed out.
+Now sending 965007...failed.
+Got response 965007, round-trip delay: 77
+Now sending 966084...failed.
+Got response 966084, round-trip delay: 76
+Now sending 967161...failed.
+Got response 967161, round-trip delay: 76
+Now sending 968238...failed.
+Failed, response timed out.
+Now sending 969510...failed.
+Got response 969510, round-trip delay: 77
+Now sending 970588...failed.
+Got response 970588, round-trip delay: 75
+Now sending 971665...failed.
+Got response 971665, round-trip delay: 76
+Now sending 972741...failed.
+Got response 972741, round-trip delay: 76
+Now sending 973818...failed.
+Got response 973818, round-trip delay: 76
+Now sending 974895...failed.
+Got response 974895, round-trip delay: 76
+Now sending 975972...failed.
+Got response 975972, round-trip delay: 76
+Now sending 977048...failed.
+Got response 977048, round-trip delay: 77
+Now sending 978125...failed.
+Got response 978125, round-trip delay: 81
+Now sending 979207...failed.
+Failed, response timed out.
+Now sending 980480...failed.
+Got response 980480, round-trip delay: 76
+Now sending 981557...failed.
+Got response 981557, round-trip delay: 76
+Now sending 982634...failed.
+Got response 982634, round-trip delay: 76
+Now sending 983710...failed.
+Got response 983710, round-trip delay: 77
+Now sending 984787...failed.
+Got response 984787, round-trip delay: 76
+Now sending 985864...failed.
+Got response 985864, round-trip delay: 76
+Now sending 986941...ok...Got response 986941, round-trip delay: 22
+Now sending 987964...failed.
+Got response 987964, round-trip delay: 76
+Now sending 989041...failed.
+Got response 989041, round-trip delay: 76
+Now sending 990117...failed.
+Got response 990117, round-trip delay: 77
+Now sending 991195...failed.
+Got response 991195, round-trip delay: 75
+Now sending 992271...failed.
+Got response 992271, round-trip delay: 77
+Now sending 993348...ok...Got response 993348, round-trip delay: 23
+Now sending 994371...failed.
+Got response 994371, round-trip delay: 77
+Now sending 995448...failed.
+Got response 995448, round-trip delay: 76
+Now sending 996525...failed.
+Got response 996525, round-trip delay: 76
+Now sending 997602...ok...Got response 997602, round-trip delay: 22
+Now sending 998625...failed.
+Got response 998625, round-trip delay: 76
+Now sending 999702...ok...Got response 999702, round-trip delay: 23
+Now sending 1000725...ok...Got response 1000725, round-trip delay: 23
+Now sending 1001748...failed.
+Got response 1001748, round-trip delay: 77
+Now sending 1002825...ok...Got response 1002825, round-trip delay: 23
+Now sending 1003848...ok...Got response 1003848, round-trip delay: 23
+Now sending 1004871...failed.
+Got response 1004871, round-trip delay: 77
+Now sending 1005948...ok...Got response 1005948, round-trip delay: 23
+Now sending 1006971...ok...Got response 1006971, round-trip delay: 24
+Now sending 1007995...failed.
+Got response 1007995, round-trip delay: 76
+Now sending 1009072...failed.
+Got response 1009072, round-trip delay: 76
+Now sending 1010149...ok...Got response 1010149, round-trip delay: 22
+Now sending 1011172...ok...Got response 1011172, round-trip delay: 22
+Now sending 1012196...ok...Got response 1012196, round-trip delay: 22
+Now sending 1013219...ok...Got response 1013219, round-trip delay: 22
+Now sending 1014242...ok...Got response 1014242, round-trip delay: 22
+Now sending 1015266...ok...Got response 1015266, round-trip delay: 22
+Now sending 1016289...ok...Got response 1016289, round-trip delay: 22
+Now sending 1017312...ok...Got response 1017312, round-trip delay: 22
+Now sending 1018335...ok...Got response 1018335, round-trip delay: 23
+Now sending 1019359...ok...Got response 1019359, round-trip delay: 26
+Now sending 1020386...ok...Got response 1020386, round-trip delay: 23
+Now sending 1021410...ok...Got response 1021410, round-trip delay: 22
+Now sending 1022433...ok...Got response 1022433, round-trip delay: 22
+Now sending 1023456...ok...Got response 1023456, round-trip delay: 27
+Now sending 1024484...ok...Got response 1024484, round-trip delay: 22
+Now sending 1025507...ok...Got response 1025507, round-trip delay: 22
+Now sending 1026531...ok...Got response 1026531, round-trip delay: 22
+Now sending 1027554...ok...Got response 1027554, round-trip delay: 40
+Now sending 1028595...ok...Got response 1028595, round-trip delay: 32
+Now sending 1029627...ok...Got response 1029627, round-trip delay: 54
+Now sending 1030682...ok...Got response 1030682, round-trip delay: 53
+Now sending 1031736...ok...Got response 1031736, round-trip delay: 81
+Now sending 1032817...ok...Got response 1032817, round-trip delay: 50
+Now sending 1033868...ok...Got response 1033868, round-trip delay: 22
+Now sending 1034891...ok...Got response 1034891, round-trip delay: 22
+Now sending 1035914...ok...Got response 1035914, round-trip delay: 23
+Now sending 1036938...ok...Got response 1036938, round-trip delay: 22
+Now sending 1037961...ok...Got response 1037961, round-trip delay: 31
+Now sending 1038993...ok...Got response 1038993, round-trip delay: 32
+Now sending 1040025...ok...Got response 1040025, round-trip delay: 36
+**************MARKER**************
+Now sending 1041062...ok...Got response 1041062, round-trip delay: 23
+
+marker value: back at laptop
+
+
+Now sending 1042086...ok...Got response 1042086, round-trip delay: 23
+Now sending 1043109...ok...Got response 1043109, round-trip delay: 23
+Now sending 1044132...ok...Got response 1044132, round-trip delay: 23
+Now sending 1045155...ok...Got response 1045155, round-trip delay: 24
+Now sending 1046179...ok...Got response 1046179, round-trip delay: 32
+Now sending 1047212...ok...Got response 1047212, round-trip delay: 22
+Now sending 1048235...ok...Got response 1048235, round-trip delay: 35
+Now sending 1049271...ok...Got response 1049271, round-trip delay: 23
+Now sending 1050295...ok...Got response 1050295, round-trip delay: 22
+
