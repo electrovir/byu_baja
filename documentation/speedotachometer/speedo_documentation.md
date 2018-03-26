@@ -6,9 +6,9 @@
   * [Magnetic Switch](https://www.amazon.com/dp/B00LYCUSBY/)
   * 10K Resistor
 
-## Circuit2
+## Circuit
 
-![circuit](speedo_circuit1.png)
+![circuit](sensor_circuit.png)
 
 The resistor branch returning to ground is needed to *pull down* the sensor input, otherwise when the switch is open the reading on the sensor is unpredictable. This way, when the switch is open the sensor consistently reads a ``0``.
 
@@ -21,8 +21,6 @@ Using the **AnalogInOutserial** example. I removed the ``AnalogWrite`` parts of 
 ## Range test
 
 With giant stack of magnets, was able to get range of around ``4.6cm``. With the stock magnet (contained in the magnetic switch product) the range is around ``2.3cm``.
-
-![magnet stack](magnetStack.jpg)
 
 **Upadate**: 
 I've discovered that I've probably been testing the magnetic switch with it facing the wrong direction.
