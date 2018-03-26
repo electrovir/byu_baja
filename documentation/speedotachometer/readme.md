@@ -21,7 +21,7 @@ This problem was fixed by simply dividing the output by two.
 
 ### 89 Car Output Shaft
 
-The CVT wasn't installed on the 89 car for the time so installed the sensor directly on the engine output shaft. The full Arduino to Android connection was setup. We had some sotware troubles with the Android getting frozen (due to errors in the code for the app) but this prototype showed that the tachometer can adequately read the max speed of the engine with the tachometer, reading up to a little over ``3500 rpm``. (There is a question of why the engine didn't rev higher, it should max out at ``3800 rpm``.) See [this test's page](../tests/tachometer_output_shaft) for more details.
+The CVT wasn't installed on the 89 car for the time so installed the sensor directly on the engine output shaft. The full Arduino to Android connection was setup. We had some sotware troubles with the Android getting frozen (due to errors in the code for the app) but this prototype showed that the tachometer can adequately read the max speed of the engine with the tachometer, reading up to a little over ``3500 rpm``. (There is a question of why the engine didn't rev higher, it should max out at ``3800 rpm``.) See [this test's page](../tests/tachometer_output_shaft/) for more details.
 
 ### Lego Contraption
 
@@ -39,7 +39,7 @@ We ran the 89 Baja car on the dyno and hooked up the tachometer and speedometer.
 
 However, the speedometer was very noisy, bouncing around like crazy. It essentially provided us no useful data.
 
-See the [relevant test page](../speedotachometer_car_dyno/) for more details.
+See the [relevant test page](../tests/speedotachometer_car_dyno/) for more details.
 
 ### 89 Car First Drive
 
