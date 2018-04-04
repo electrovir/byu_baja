@@ -10,7 +10,7 @@ The speedometer and tachometer use nearly the same circuit and code; thus they a
 A pull down resistor is required to pull the input pin to ground when the sensor is open in order to get a constant ``0``. Otherwise the pin will be floating and values become unpredicatable. A ``10 KΩ`` resistor was used along with the ``3.3 V`` pin to limit current to ``0.33 mA``. The ``5 V`` pin would also work fine (with a current of ``0.5 mA``).
 
 ## Prototypes, Tests, Models (Chronologically)
-
+``
 ### Bicycle Wheel
 
 With the circuit hooked up to the Arduino and connected over Bluetooth to the Android tablet, I installed the sensor on my roommate's bicycle wheel. Through this test I discovered that the magnet was being picked up twice per revolution. I suspect that has something to do with the fact that most analog signals are bouncy, but also note the magnetic pattern of the sensor's pick-up magnet as seen below.
@@ -49,8 +49,14 @@ In this test the tachometer was not installed. However, this was the first test 
 
 See the [first driving test](../tests/driving_tests/2018-02-17_first_instrumentation_test/) section for more info.
 
+### 27 Car First Drive
+
+In this test, only the speedometer was hooked up without the magnet installed near the sensor. I was using this to test for sensor noise. Interestingly, the sensor read *absolutely nothing*, as shown below. This was good, but doesn't help us discover the source of our speedometer noise. For more details see the [test results](../tests/driving_tests/2018-03-30_no_magnet_test).
+
+![no magnet test results](../tests/driving_tests/2018-03-30_no_magnet_test/speed_readings.png)
+
 ### Debouncing Model
 
-In light of the problems experienced with , I decided to turn to an actual debounce timer. Calculations (contained within [the matlab file](debounce_timer.m)) produced the following plot of max and min measured speeds with a ``1 cm`` long magnet mounted on the rear axle with various debounce times. More info regarding this is in the [debounce documentation](debouncing.md). I have concerns about the small length of the magnet.
+In light of the problems experienced with speedometer accuracy, I decided to turn to an actual debounce timer. Calculations (contained within [the matlab file](debounce_timer.m)) produced the following plot of max and min measured speeds with a ``1 cm`` long magnet mounted on the rear axle with various debounce times. More info regarding this is in the [debounce documentation](debouncing.md). I have concerns about the small length of the magnet.
 
 ![debounce times](debounce_timer.png)
