@@ -1,15 +1,3 @@
-<style>
-  .green {
-    color: green;
-  }
-  .red {
-    color: red;
-  }
-  .blue {
-    color: blue;
-  }
-</style>
-
 # How To Use the Instrumentation System
 
 These instructions are as of April 16, 2018. This was made before the mounting was completed for the Android tablet and the Arduino.
@@ -32,9 +20,9 @@ Situate the Arduino in the case such that the molex connectors and the USB cable
 
 Zip both sides of the zipper to the protruding connectors tightly.
 
-Tape the USB battery pack onto the outside of the case. Make sure the button, indicated with the <span class="green">green</span> arrow in the image below, is not covered by the tape. Also make sure the charge indicator, indicated by the <span class="red">red</span> arrow in the image below, is not covered as well.
+Tape the USB battery pack onto the outside of the case. Make sure the button, indicated with the <span style="color:green;">green</span> arrow in the image below, is not covered by the tape. Also make sure the charge indicator, indicated by the <span style="color:red;">red</span> arrow in the image below, is not covered as well.
 
-Press the button to check the charge state on the battery. The bar indicated with the <span class="red">red arrow</span> will light up blue to indicate charge. The Arduino does not use much battery power to operate, but just in case make sure the charge is at least half way full. To charge the battery pack, use a micro USB cable.
+Press the button to check the charge state on the battery. The bar indicated with the <span style="color:red;">red arrow</span> will light up blue to indicate charge. The Arduino does not use much battery power to operate, but just in case make sure the charge is at least half way full. To charge the battery pack, use a micro USB cable.
 
 ![battery taped to case](images/03_case_with_battery.jpg)
 
@@ -56,7 +44,7 @@ On the Arduino's molex connections are letters indicating which sensor they shou
 | FL | Front Left shock |
 | ST | Speedometer Test sensor |
 
-Sometimes the molex connectors are hard to plug into each other. To remedy this, first make sure the female pins, marked by the <span class="red">red arrow</span> below, are sufficiently opened. Stick a small pin into them and work it around to widen the pin if necessary. Also, make sure the male pins, indicated with the <span class="green">green arrow</span> below, are centered. If they're stuck off to the side, insert a small pin to the plastic and try to work the pins into the middle. Don't push down on the pins otherwise they may disconnect from the plastic.
+Sometimes the molex connectors are hard to plug into each other. To remedy this, first make sure the female pins, marked by the <span style="color:red;">red arrow</span> below, are sufficiently opened. Stick a small pin into them and work it around to widen the pin if necessary. Also, make sure the male pins, indicated with the <span style="color:green">green arrow</span> below, are centered. If they're stuck off to the side, insert a small pin to the plastic and try to work the pins into the middle. Don't push down on the pins otherwise they may disconnect from the plastic.
 
 ![molex pins](images/04_molex_pins.jpg)
 
@@ -66,15 +54,15 @@ Make sure the USB cord is plugged into the battery before driving the car, but d
 
 ### Bluetooth Connection
 
-When turning on the Android app, notice the bluetooth icon in the bottom right of the app. If it is <span class="red">red</span>, as shown below, then the Android has not been able to connect to the Arduino.
+When turning on the Android app, notice the bluetooth icon in the bottom right of the app. If it is <span style="color:red">red</span>, as shown below, then the Android has not been able to connect to the Arduino.
 
 ![bluetooth not connected](images/05_bluetooth_disconnected.jpg)
 
-When the Android connects to the Arduino over bluetooth, the icon will turn <span class="blue">blue</span>, as shown below.
+When the Android connects to the Arduino over bluetooth, the icon will turn <span style="color:blue">blue</span>, as shown below.
 
 ![bluetooth connection established](images/06_bluetooth_connected.jpg)
 
-Note that sometimes when the app is first started up, the icon will stay <span class="red">red</span> even afer the bluetooth has connected. To fix this, unplug the Arduino from its battery and then plug it back in.
+Note that sometimes when the app is first started up, the icon will stay <span style="color:red">red</span> even afer the bluetooth has connected. To fix this, unplug the Arduino from its battery and then plug it back in.
 
 ### Saving Data Subsets
 
